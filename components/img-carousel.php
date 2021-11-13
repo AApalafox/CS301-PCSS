@@ -1,13 +1,10 @@
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="2000">
-      <img src="assets/img/gray.jpg" class="d-block w-100" alt="...">
+      <img src="assets/img/img-carousel-2.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="assets/img/black.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="assets/img/brown.jpg" class="d-block w-100" alt="...">
+      <img src="assets/img/img-carousel-1.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -20,7 +17,14 @@
   </button>
 </div>
 
-<div class="row justify-content-center text-center p-5">
-	<div class="col ">Some text</div>
-	<div class="col ">Some text</div>
+<div class="img-caption text-center">
+  <div class="p-4">
+    <div class="caption-title">
+      Umbrella Corporation
+    </div>
+    <div class="card-body">
+      <h1 class="caption-body mb-3">Your health is our priority</h1>
+      <a href="#" class="btn">Medical Records</a>
+    </div>
+  </div>
 </div>

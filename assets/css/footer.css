@@ -7,7 +7,7 @@ footer {
     color: rgb(189, 196, 203)
 }
 
-ul {
+/* ul {
     list-style-type: none;
     margin: 0;
     padding: 0
@@ -21,7 +21,7 @@ ul>li {
 ul>li:hover {
     color: #957bda;
     cursor: pointer
-}
+} */
 
 hr {
     border-width: 3px

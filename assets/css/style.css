@@ -1,5 +1,61 @@
+* {
+	font-family: 'Muli', Sans-Serif;
+	font-size: 16px;
+}
+
+a {
+	text-decoration: none;
+	color: #333333;
+}
+
+i {
+	padding-right: 5px;
+	color: #3089FC;
+}
+
 body {
 	background-color: #F5F5F5;
+}
+
+.brand {
+	font-family: 'Neuton', Serif;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.brand-text {
+	font-family: 'Work Sans', Sans-Serif;
+	font-size: 15px;
+	padding-top: 10px;
+}
+
+.caption-title {
+	font-family: 'Neuton', Serif;
+	font-size: 50px;
+	color: black;
+	font-weight: bold;
+}
+
+.caption-body {
+	font-size: 20px;
+	color: #333333;
+}
+
+.btn{
+	font-weight: bold;
+	background-color: #FF8000;
+	color: white;
+	border-radius: 50px;
+	padding: 10px;
+}
+
+a.nav-link {
+	margin-right: 10px;
+}
+
+.top-nav {
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .fixed-top {
@@ -13,8 +69,15 @@ body {
 	margin: auto;
 }
 
-.carousel-inner > .carousel-item > img {
-  height:750px;
+.component {
+	margin-bottom: 50px;
+}
+
+.img-caption {
+	background-color: rgba(255,255,255,.2);
+	position: absolute;
+	top: 40%;
+	left: 15%;
 }
 
 .test {
