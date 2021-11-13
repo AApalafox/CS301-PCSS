@@ -1,0 +1,17 @@
+resources online for web public
+
+DESIGNS
+https://preview.colorlib.com/theme/sensive/
+https://preview.colorlib.com/theme/drcare/appointment.html
+https://demo.goodlayers.com/mediz/hospital/
+
+COMPONENTS
+header:
+C:\Users\kathl\Downloads - fixed-onscroll
+
+footer:
+https://getbootstrap.com/docs/5.1/examples/footers/
+https://demo.tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/footer-distributed-with-address-and-phones.html
+
+others:
+https://getbootstrap.com/docs/5.1/examples/
