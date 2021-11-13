@@ -1,0 +1,23 @@
+body {
+	background-color: #F5F5F5;
+}
+
+.fixed-top {
+	top: -40px;
+	transform: translateY(40px);
+	transition: transform .5s ease;
+}
+
+.content-container {
+	width: 90%;
+	margin: auto;
+}
+
+.carousel-inner > .carousel-item > img {
+  height:750px;
+}
+
+.test {
+	border: 2px solid red;
+	background-color: white;
+}
