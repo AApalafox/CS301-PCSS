@@ -10,7 +10,7 @@
 	
 </head>
 
-<body>
+<body class="">
 	<?php include 'templates/header.php'; ?>
 
 	<div class="position-relative component">
@@ -18,18 +18,27 @@
 	</div>
 
 	<div class="content-container component">
+		<div class="text-center mb-4 component-title">
+				<h2>Our Services</h2>
+		</div>
 		<?php include 'components/services-cards.php' ?>
 	</div>
 
 	<div class="content-container component">
+		<div class="text-center mb-4 brand component-title">
+				<h2>Meet your Trustworthy Doctors</h2>
+		</div>
 		<?php include 'components/doctor-cards.php'; ?>
 	</div>
 	
-	<div class="component">
-		<!-- php include 'components/departments-accordion.php'; -->
+	<div class="content-container component">
+		<div class="text-center mb-4 brand component-title">
+				<h2>Departments</h2>
+		</div>
+		<?php include 'components/departments-accordion.php'; ?>
 	</div>
 
-	<div class="content-container component">
+	<div class="testimony-container component">
 		<?php include 'components/testimonies-carousel.php' ?>
 	</div>
 	

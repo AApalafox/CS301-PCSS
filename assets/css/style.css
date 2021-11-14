@@ -1,6 +1,7 @@
 * {
 	font-family: 'Muli', Sans-Serif;
 	font-size: 16px;
+	color: #333333;
 }
 
 a {
@@ -32,7 +33,7 @@ body {
 .caption-title {
 	font-family: 'Neuton', Serif;
 	font-size: 50px;
-	color: black;
+	color: #333333;
 	font-weight: bold;
 }
 
@@ -62,6 +63,7 @@ a.nav-link {
 	top: -40px;
 	transform: translateY(40px);
 	transition: transform .5s ease;
+	width: 100%;
 }
 
 .content-container {
@@ -73,11 +75,48 @@ a.nav-link {
 	margin-bottom: 50px;
 }
 
+.component-title {
+	color: #3089FC;
+}
+
 .img-caption {
 	background-color: rgba(255,255,255,.2);
 	position: absolute;
 	top: 40%;
 	left: 15%;
+}
+
+.zoom {
+	/* padding: 50px; */
+  /* background-color: green; */
+  transition: transform .4s ease; /* Animation */
+	
+  /* width: 200px; */
+  /* height: 200px; */
+  /* margin: 0 auto; */
+}
+
+.zoom:hover {
+	transform: scale(1.05);
+	box-shadow: 0 4px 8px 0 rgba(204, 147, 147, 0.3);
+}
+
+.accordion-body {
+	margin-top: 10px;
+	padding: 30px;
+}
+
+.testimony-container {
+	width: 100%;
+}
+
+.testimony-img-container {
+	width: 300px;
+	height: 300px;
+}
+
+.quote {
+	padding: 25px;
 }
 
 .test {
