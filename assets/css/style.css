@@ -22,6 +22,7 @@ body {
 	font-family: 'Neuton', Serif;
 	font-size: 2em;
 	font-weight: bold;
+	letter-spacing: 1px;
 }
 
 .brand-text {
@@ -64,6 +65,7 @@ a.nav-link {
 	transform: translateY(40px);
 	transition: transform .5s ease;
 	width: 100%;
+	box-shadow: 0 4px 8px 0 rgba(204, 147, 147, 0.3);
 }
 
 .content-container {
@@ -106,7 +108,7 @@ a.nav-link {
 	padding: 30px;
 }
 
-.testimony-container {
+.wide-container {
 	width: 100%;
 }
 
@@ -117,6 +119,14 @@ a.nav-link {
 
 .quote {
 	padding: 25px;
+}
+
+.quote i {
+	margin-bottom: 15px;
+}
+
+.bg-primary {
+	background-color: #17449E	!important;
 }
 
 .test {

@@ -4,7 +4,7 @@
       <div class="row g-0">
         <div class="col">
           <div class="text-end">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">Blood Count</h5>
             <p class="">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
           </div>
         </div>
@@ -19,7 +19,7 @@
       <div class="row g-0">
         <div class="col">
           <div class="text-end">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">Analyzing and Test Samples</h5>
             <p class="">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
           </div>
         </div>
@@ -34,7 +34,7 @@
       <div class="row g-0">
         <div class="col">
           <div class="text-end">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">Ensure Accurate Test Results</h5>
             <p class="">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
           </div>
         </div>
@@ -49,7 +49,7 @@
       <div class="row g-0">
         <div class="col">
           <div class="text-end">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">Diagnose Disease</h5>
             <p class="">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
           </div>
         </div>

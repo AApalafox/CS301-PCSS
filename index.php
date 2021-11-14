@@ -17,29 +17,37 @@
 		<?php include 'components/img-carousel.php'; ?>
 	</div>
 
+	<div class="content-container">
+		<?php include 'components/schedule.php'; ?>
+	</div>
+
 	<div class="content-container component">
-		<div class="text-center mb-4 component-title">
+		<div class="text-center mb-2 ">
 				<h2>Our Services</h2>
 		</div>
 		<?php include 'components/services-cards.php' ?>
 	</div>
 
-	<div class="content-container component">
-		<div class="text-center mb-4 brand component-title">
+	<div class="container component">
+		<div class="text-center mb-4 brand ">
 				<h2>Meet your Trustworthy Doctors</h2>
 		</div>
 		<?php include 'components/doctor-cards.php'; ?>
 	</div>
 	
 	<div class="content-container component">
-		<div class="text-center mb-4 brand component-title">
+		<div class="text-center mb-4 brand ">
 				<h2>Departments</h2>
 		</div>
 		<?php include 'components/departments-accordion.php'; ?>
 	</div>
 
-	<div class="testimony-container component">
+	<div class="wide-container component">
 		<?php include 'components/testimonies-carousel.php' ?>
+	</div>
+
+	<div class="container">
+		<?php include 'components/schedule.php'; ?>
 	</div>
 	
 	<?php include 'templates/footer.php'; ?>

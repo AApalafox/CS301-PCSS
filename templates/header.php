@@ -11,7 +11,7 @@
       <span class="navbar-toggler-icon"></span>
     </button> -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mx-5">
+      <ul class="navbar-nav mx-4">
         <li class="brand-text mx-4"><i class="fas fa-at"></i>umbrellacorp@email.com</li>
         <li class="brand-text mx-4"><i class="fas fa-phone"></i>+63 45 125 0117</li>
         <li class="brand-text mx-4"><i class="fas fa-map-marker-alt"></i></i>Elliptical Rd, Diliman, Quezon City, Metro Manila</li>
