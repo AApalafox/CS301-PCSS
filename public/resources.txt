@@ -1,0 +1,30 @@
+resources online for web public
+
+DESIGNS
+https://preview.colorlib.com/theme/sensive/
+https://preview.colorlib.com/theme/drcare/appointment.html
+https://demo.goodlayers.com/mediz/hospital/
+
+COMPONENTS
+header:
+C:\Users\kathl\Downloads - fixed-onscroll
+
+footer:
+https://getbootstrap.com/docs/5.1/examples/footers/
+https://demo.tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/footer-distributed-with-address-and-phones.html
+
+others:
+https://getbootstrap.com/docs/5.1/examples/
+
+brand colors:
+	theme: 	#3089FC //blue
+					#0D75FB //mid blue
+					#17449E //dark blue
+	text: #333333 //dark brown
+	primary/buttons: #FF8000 //bright orange
+
+fonts:
+	brand: Font-Family: 'Neuton', Serif;
+	brand-text: Font-Family: 'Work Sans', Sans-Serif;
+	title: Font-Family: 'Merriweather', Serif;
+	body: Font-Family: 'Muli', Sans-Serif;
