@@ -74,7 +74,7 @@ a.nav-link {
 }
 
 .component {
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 
 .component-title {
@@ -89,13 +89,7 @@ a.nav-link {
 }
 
 .zoom {
-	/* padding: 50px; */
-  /* background-color: green; */
-  transition: transform .4s ease; /* Animation */
-	
-  /* width: 200px; */
-  /* height: 200px; */
-  /* margin: 0 auto; */
+  transition: transform .4s ease;
 }
 
 .zoom:hover {
@@ -126,7 +120,7 @@ a.nav-link {
 }
 
 .bg-primary {
-	background-color: #17449E	!important;
+	background-color: #3089FC	!important;
 }
 
 .test {
