@@ -44,11 +44,17 @@ body {
 }
 
 .btn{
-	font-weight: bold;
+	font-weight: normal;
 	background-color: #FF8000;
 	color: white;
 	border-radius: 50px;
 	padding: 10px;
+}
+
+.btn:hover{
+	font-weight: bold;
+	background-color: #FF8000;
+	color: white;
 }
 
 a.nav-link {

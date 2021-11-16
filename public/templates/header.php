@@ -1,5 +1,5 @@
 <!-- add the scroll listener -->
-<script src="assets/script/scroll.js"></script>
+<script src="assets/js/scroll.js"></script>
 
 <nav class="navbar navbar-expand-lg top-nav">
   <div class="container-fluid content-container">
@@ -26,8 +26,8 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon text-dark"></span>
     </button>
-    
-    
+
+
     <div class="collapse navbar-collapse" id="main_nav">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link active" href="#"> Home </a></li>
@@ -40,7 +40,7 @@
 
     </div> <!-- navbar-collapse.// -->
     <div class="ms-auto">
-      <button type="button" class="btn">Schedule Consultation</button>
+      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#addScheduleModal">Schedule Consultation</button>
     </div>
 
   </div> <!-- container-fluid.// -->
