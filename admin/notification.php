@@ -40,7 +40,7 @@
 					</div>
 
 
-					<button class="btn">Save</button>
+					<button class="btn btnSquare">Save</button>
 				</div>
 				<div class="col">
 
