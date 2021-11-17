@@ -1,3 +1,10 @@
+<?php
+
+if(isset($_COOKIE["id"])){
+	header("location:dashboard.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
