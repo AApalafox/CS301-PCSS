@@ -68,8 +68,14 @@ body {
 	padding-left: 4px;
 }
 
-btnlogin {
-	top: 50%;
+.btnLogin {
+	font-weight: bold;
+	align-items: center;
+	/* font-weight: normal; */
+	background-color: #3089FC;
+	color: #F5F5F5;
+	padding: 20px;
+	border-radius: 5px;
 }
 
 a.nav-link {
