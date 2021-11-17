@@ -111,4 +111,32 @@
 				}, false)
 			})
 	})()
+	
+	//TO CHECK IF A CHECKBOX IS ACTIVE
+	var conditions = [];
+	<?php for($i = 0; $i < 5; $i++){?>
+		$('.form-check:eq(<?=$i?>)').find('input').click(function(){
+			if($(this).is(':checked')){
+				conditions.push($(this).val());
+			}
+			else{
+				conditions.splice(conditions.indexOf($(this).val()), 1);
+			}
+		});
+	<?php };?>
+	$('#submitSchedule').hover(function(){
+		output = [""];
+		if(conditions.length>0){
+			for(let x in conditions){
+				output[0] += conditions[x]+", ";
+			}
+			output[0] = output[0].substring(0, output[0].length-2);
+		}
+		output.push($('.form-control:eq(0)').val());
+		output.push($('.form-control:eq(1)').val().substring(0,10));
+		output.push($('.form-control:eq(1)').val().substring(11));
+
+		console.log(output);
+
+	});
 </script>
