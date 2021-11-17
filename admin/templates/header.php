@@ -14,10 +14,20 @@
       <ul class="navbar-nav mx-4">
         <!-- <li class="brand-text mx-4"><i class="fas fa-at"></i>umbrellacorp@email.com</li>
         <li class="brand-text mx-4"><i class="fas fa-phone"></i>+63 45 125 0117</li> -->
-        <li class="brand-text mx-4"><i class="fas fa-map-marker-alt"></i></i>Elliptical Rd, Diliman, Quezon City, Metro Manila</li>
-        <li class="d-flex">
+        <li class="brand-text mx-4">Patient Consultation Scheduling System</li>
+        <!-- <li class="d-flex">
           <a href="#"><i class="fas fa-user-circle fa-3x social account"></i></a>
-        </li>
+        </li> -->
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-users"></i>
+            Name of admin
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Account</a></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </div>
       </ul>
     </div>
   </div>

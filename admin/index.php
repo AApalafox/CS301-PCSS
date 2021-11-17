@@ -12,10 +12,8 @@
 </head>
 
 <body>
-	<div class="container test">
-		<div class="login-container test text-center card">
-			<?php include 'login.php'; ?>
-		</div>
+	<div class="container">
+		<?php include 'login.php'; ?>
 	</div>
 </body>
 

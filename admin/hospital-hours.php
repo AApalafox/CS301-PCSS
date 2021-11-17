@@ -76,7 +76,8 @@
 				</div>
 			</div>
 		</div>
-
+		<hr>
+		<?php include 'templates/bottom-nav.php'; ?>
 	</div>
 </body>
 

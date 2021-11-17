@@ -24,7 +24,7 @@
 		<!-- page content -->
 		<div class="container">
 			<label class="caption-body">User List</label>
-			<table class="table table-hover">
+			<table class="table table-hover  align-middle">
 				<thead>
 					<tr>
 						<th scope="col">
@@ -95,7 +95,8 @@
 				</tbody>
 			</table>
 		</div>
-
+		<hr>
+		<?php include 'templates/bottom-nav.php'; ?>
 	</div>
 </body>
 

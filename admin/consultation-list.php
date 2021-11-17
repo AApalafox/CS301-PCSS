@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="maximum-scale=1.0, width=device-width, initial-scale=1.0">
 	<title>PCSS admin</title>
-	
+
 	<?php include 'assets/links.php'; ?>
 
 </head>
@@ -24,7 +24,7 @@
 		<!-- page content -->
 		<div class="container">
 			<label class="caption-body">Consultation List</label>
-			<table class="table table-hover">
+			<table class="table table-hover align-middle">
 				<thead>
 					<tr>
 						<th scope="col">ID</th>
@@ -97,7 +97,8 @@
 				</tbody>
 			</table>
 		</div>
-
+		<hr>
+		<?php include 'templates/bottom-nav.php'; ?>
 	</div>
 </body>
 
