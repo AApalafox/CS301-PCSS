@@ -12,10 +12,20 @@
 </head>
 
 <body>
-	<div class="container test">
-		<div class="login-container test text-center card">
-			<?php include 'login.php'; ?>
+	<div class="main-container" id="mainContainer">
+		<?php include 'templates/header.php'; ?>
+		<hr>
+
+		<!-- side nav -->
+		<div class="container">
+			<?php include 'templates/side-nav.php'; ?>
 		</div>
+
+		<!-- page content -->
+		<div class="container">
+			<h1 class="caption-body">Welcome!</h1>
+		</div>
+
 	</div>
 </body>
 

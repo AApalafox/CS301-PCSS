@@ -1,0 +1,42 @@
+
+footer {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+ ul.footer-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.footer-ul>li {
+    padding: 4px;
+    color: #FF8000;
+}
+
+ul>li:hover {
+    color: #3089FC;
+    cursor: pointer;
+} 
+
+hr {
+    border-width: 3px
+}
+
+.card-footer {
+    padding: 2% 7%
+}
+
+
+.policy>div {
+    padding: 4px
+}
+
+.heading {
+    color: black
+}
+
+.divider {
+    border-top: 2px solid
+} 
