@@ -38,9 +38,8 @@ $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
 			<table class="table table-hover align-middle" id="myTable">
 				<thead>
 					<tr>
-						<th scope="col" class="">ID</th>
 						<?php
-						for ($i = 1; $i < count($placeholder); $i++)
+						for ($i = 0; $i < count($placeholder); $i++)
 							echo '<th class="">', $placeholder[$i], '</th>';
 						echo '<td class="">Edit/Delete</td>';
 						?>
