@@ -6,17 +6,15 @@
 	}
 	else{
 		$condition= $_POST['condition'];
-		$allergies= $_POST['allergies'];
 		$reason=$_POST['reason'];
 		//status to be followed on approval/denial
 		//remarks to be followed on denial/schedule completion
-		$form_date=$_POST['form_date'];
-		$form_time=$_POST['form_time'];
+		$form_dateTime=$_POST['form_dateTime'];
 		$patient_id=$_POST['patient_id'];
 		//consultant_id to be followed on approval
 
-		$sql = "INSERT INTO form (condition, allergies, reason, form_date, form_time, patient_id)
-		 VALUES ('$condition', '$allergies', '$reason', '$form_date', '$form_time', '$patient_id')";
+		$sql = "INSERT INTO form (condition, allergies, reason, form_dateTime, patient_id)
+		 VALUES ('$condition', '$allergies', '$reason', '$form_dateTime', '$patient_id')";
 		if ($conn -> query($sql) === TRUE) {
 			$response = ["code"=>200];
 		}
