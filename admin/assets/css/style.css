@@ -49,7 +49,7 @@ body {
 .btn{
 	align-items: center;
 	/* font-weight: normal; */
-	background-color: #3089FC;
+	background-color: #333333;
 	color: #F5F5F5;
 	border-radius: 50px;
 	padding: 8px;
@@ -57,14 +57,14 @@ body {
 }
 
 .btn:hover{
-	background-color: #17449E;
+	background-color: #3089FC;
 	color: #F5F5F5;
 }
 
 .btn i {
 	color: #F5F5F5;
 	padding-top: 4px;
-	padding-left: 4px;
+	padding-left: 3px;
 }
 
 .btnSquare {
@@ -98,6 +98,14 @@ a.nav-link {
 
 .bg-primary {
 	background-color: #3089FC	!important;
+}
+
+.bg-dark {
+	background-color: #333333	!important;
+}
+
+td>input {
+	max-width: 110px;
 }
 
 .form-check {

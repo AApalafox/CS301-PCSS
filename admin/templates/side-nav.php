@@ -9,7 +9,7 @@
 
 <!-- Use any element to open the sidenav -->
 
-<button onclick="openNav()" id="btnMenu" class="btn" style="display: none;"><i class="fas fa-bars fa-2x"></i></i></button>
+<button onclick="openNav()" id="btnMenu" class="btn btnSquare" style="display: none;"><i class="fas fa-bars fa-1x"></i></i></button>
 
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 <div id="main">
