@@ -70,12 +70,6 @@
 							<div class="invalid-feedback">
 								Please enter your reason for consultation
 							</div>
-							<script type="text/javascript">
-								$("#datetime2").datetimepicker({
-									format: 'yyyy-mm-dd hh:ii',
-									autoclose: true
-								});
-							</script>
 						</div>
 					</div>
 				</div><!-- end of modal body -->
@@ -93,6 +87,10 @@
 </div><!-- end of modal -->
 
 <script>
+	$("#datetime2").datetimepicker({
+		format: 'yyyy-mm-dd hh:ii',
+		autoclose: true
+	});
 	(function() {
 		'use strict'
 
