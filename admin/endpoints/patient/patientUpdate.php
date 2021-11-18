@@ -14,7 +14,7 @@
 		$phone=$_POST['phone'];
 
 		$sql = "UPDATE patient SET 
-		fname='$lname', 
+		fname='$fname', 
 		lname='$lname', 
 		birthdate='$birthdate', 
 		email='$email', 
