@@ -1,6 +1,22 @@
 <?php
-if(!isset($_COOKIE["id"])){
+if (!isset($_COOKIE["id"])) {
 	header("location:index.php");
+}
+
+include("endpoints/db.php");
+
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+} else {
+	$sql = "SELECT CONCAT(p.fname, ' ', p.lname) AS title, s.schedule_dateTime AS start
+  FROM schedule as s
+  JOIN form as f
+        on f.form_id = s.form_id
+  JOIN patient as p
+        on f.patient_id = p.patient_id";
+	$result = $conn->query($sql);
+	$phpschedules = $result->fetch_all(MYSQLI_ASSOC);
+	mysqli_close($conn);
 }
 ?>
 <!DOCTYPE html>
@@ -27,12 +43,10 @@ if(!isset($_COOKIE["id"])){
 		</div>
 
 		<!-- page content -->
-		<div class="container">
-			<div class="ui container">
-				<div class="ui grid">
-					<div class="ui sixteen column">
-						<div id="calendar"></div>
-					</div>
+		<div class="ui container">
+			<div class="ui grid">
+				<div class="ui sixteen column">
+					<div id="calendar"></div>
 				</div>
 			</div>
 		</div>
@@ -44,79 +58,27 @@ if(!isset($_COOKIE["id"])){
 </html>
 
 <!-- script for displaying calendar -->
-<script>
+<script type="text/javascript">
 	const d = new Date();
-	month = d.getMonth() + 1; //returns indexed 0, so plus 1 to offset
-	const today = d.getFullYear() + '-' + month + '-' + d.getDate();
-	console.log(today);
+	const today = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+	// console.log(today);
+
+	var schedules = <?php echo json_encode($phpschedules) ?>;
+	console.log(schedules);
+
 	$(document).ready(function() {
 
 		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,basicWeek,basicDay'
-			},
-
-			defaultDate: today,
-			navLinks: true, // can click day/week names to navigate views
-			editable: true,
-			eventLimit: true, // allow "more" link when too many events
-			events: [{
-					title: 'All Day Event',
-					start: '2021-11-01'
+				header: {
+					left: 'prev,next today',
+					center: 'title',
+					right: 'month,basicWeek,basicDay'
 				},
-				{
-					title: 'Long Event',
-					start: '2021-11-07',
-					end: '2021-11-10'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2021-11-09T16:00:00'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2021-11-16T16:00:00'
-				},
-				{
-					title: 'Conference',
-					start: '2021-11-11',
-					end: '2021-11-13'
-				},
-				{
-					title: 'Meeting',
-					start: '2021-11-12T10:30:00',
-					end: '2021-11-12T12:30:00'
-				},
-				{
-					title: 'Lunch',
-					start: '2021-11-12T12:00:00'
-				},
-				{
-					title: 'Meeting',
-					start: '2021-11-12T14:30:00'
-				},
-				{
-					title: 'Happy Hour',
-					start: '2021-11-12T17:30:00'
-				},
-				{
-					title: 'Dinner',
-					start: '2021-11-12T20:00:00'
-				},
-				{
-					title: 'Birthday Party',
-					start: '2021-11-13T07:00:00'
-				},
-				{
-					title: 'Click for Google',
-					url: 'https://google.com/',
-					start: '2021-11-28'
-				}
-			]
+				defaultDate: today,
+				navLinks: true, // can click day/week names to navigate views
+				editable: false,
+				eventLimit: true, // allow "more" link when too many events
+				events: schedules
 		});
 
 	});

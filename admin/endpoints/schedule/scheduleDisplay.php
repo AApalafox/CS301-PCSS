@@ -1,6 +1,5 @@
 <?php 
-	//display
-	include("../db.php");
+	
 	// Check connection
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
@@ -10,7 +9,8 @@
 		$result = $conn -> query($sql);
 
 		if ($result->num_rows > 0) {
-			echo json_encode($result->fetch_all(MYSQLI_ASSOC));
+			$schedules = $result->fetch_all(MYSQLI_ASSOC);
+			// var_dump($schedules);
 		}
 		else{
 			$error = "Error:" . $sql . "<br>" . $conn->error;
