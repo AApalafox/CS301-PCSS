@@ -43,7 +43,7 @@
 					<button class="btn btnSquare">Save</button>
 				</div>
 				<div class="col ">
-					<div class="container mt-3 text-center">
+					<div class="container text-center">
 						<p>Send them an email</p>
 						<a href="https://mail.google.com/" target="_blank">
 							<button class="btn btnSquare fw-bold">

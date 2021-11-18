@@ -109,9 +109,9 @@ td>input {
 }
 
 .form-check {
-	margin: 20px 0;
+	margin: 15px 0;
 	/* border: 2px solid red; */
-	line-height: 25px;
+	line-height: 20px;
 	font-weight: bold;
 }
 
