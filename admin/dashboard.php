@@ -16,8 +16,9 @@ if ($conn->connect_error) {
         on f.patient_id = p.patient_id";
 	$result = $conn->query($sql);
 	$phpschedules = $result->fetch_all(MYSQLI_ASSOC);
-	mysqli_close($conn);
 }
+mysqli_close($conn);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,16 +70,16 @@ if ($conn->connect_error) {
 	$(document).ready(function() {
 
 		$('#calendar').fullCalendar({
-				header: {
-					left: 'prev,next today',
-					center: 'title',
-					right: 'month,basicWeek,basicDay'
-				},
-				defaultDate: today,
-				navLinks: true, // can click day/week names to navigate views
-				editable: false,
-				eventLimit: true, // allow "more" link when too many events
-				events: schedules
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay'
+			},
+			defaultDate: today,
+			navLinks: true, // can click day/week names to navigate views
+			editable: false,
+			eventLimit: true, // allow "more" link when too many events
+			events: schedules
 		});
 
 	});

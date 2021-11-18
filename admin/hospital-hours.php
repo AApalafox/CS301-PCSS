@@ -7,7 +7,20 @@
 	<meta name="viewport" content="maximum-scale=1.0, width=device-width, initial-scale=1.0">
 	<title>PCSS admin</title>
 
-	<?php include 'assets/links.php'; ?>
+	<?php include 'assets/links.php';
+
+	include("endpoints/db.php");
+
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	} else {
+		$sql = "SELECT * FROM hospital_schedule";
+		$result = $conn->query($sql);
+		$hospital_schedule = $result->fetch_all(MYSQLI_ASSOC);
+	}
+	mysqli_close($conn);
+
+	?>
 
 </head>
 
@@ -23,57 +36,61 @@
 
 		<!-- page content -->
 		<div class="container">
-			<label class="caption-body">Hospital hours</label>
+			<label class="caption-body">Hospital Schedule</label>
 			<div class="row">
 				<div class="col">
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="sunday">
+						<input class="form-check-input" type="checkbox" value="sunday" id="sunday">
 						<label class="form-check-label" for="sunday">
 							Sunday
 						</label>
 					</div>
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="monday" checked>
+						<input class="form-check-input" type="checkbox" value="monday" id="monday">
 						<label class="form-check-label" for="monday">
 							Monday
 						</label>
 					</div>
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="tuesday" checked>
+						<input class="form-check-input" type="checkbox" value="tuesday" id="tuesday">
 						<label class="form-check-label" for="tuesday">
 							Tuesday
 						</label>
 					</div>
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="wednesday" checked>
+						<input class="form-check-input" type="checkbox" value="wednesday" id="wednesday">
 						<label class="form-check-label" for="wednesday">
 							Wednesday
 						</label>
 					</div>
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="thursday" checked>
+						<input class="form-check-input" type="checkbox" value="thursday" id="thursday">
 						<label class="form-check-label" for="thursday">
 							Thursday
 						</label>
 					</div>
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="friday" checked>
+						<input class="form-check-input" type="checkbox" value="friday" id="friday">
 						<label class="form-check-label" for="friday">
 							Friday
 						</label>
 					</div>
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="saturday" checked>
+						<input class="form-check-input" type="checkbox" value="saturday" id="saturday">
 						<label class="form-check-label" for="saturday">
 							Saturday
 						</label>
 					</div>
 
-					<button class="btn btnSquare">Save</button>
+					<button class="btn btnSquare mb-3" onclick="saveSchedule()">Save</button>
+
+
 				</div>
 				<div class="col">
 					Time input for schedule
 				</div>
+				<hr>
+				<p id="daysModified"></p>
 			</div>
 		</div>
 		<hr>
@@ -82,3 +99,58 @@
 </body>
 
 </html>
+
+<script>
+	$(document).ready(laodSchedule());
+
+	function laodSchedule() {
+		var hospital_schedule = <?php echo json_encode($hospital_schedule) ?>;
+		// console.log(hospital_schedule);
+		days = hospital_schedule[0]['value'];
+		days = days.split(",");
+		daysModified = hospital_schedule[0]['date_created'];
+		document.getElementById("daysModified").innerHTML = 'Last modified: ' + daysModified;
+		// console.log(days, daysModified);
+		time = hospital_schedule[1]['value'];
+		timeModified = hospital_schedule[1]['date_created'];
+		// console.log(time, timeModified);
+
+		for (var i = 0; i < days.length; i++) {
+			document.getElementById(days[i]).checked = true;
+		}
+	}
+
+	function saveSchedule() {
+		days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+		inputDays = [];
+		for (var i = 0; i < days.length; i++) {
+			if (document.getElementById(days[i]).checked) {
+				inputDays.push(document.getElementById(days[i]).value);
+			}
+
+		}
+		inputDays = inputDays.toString();
+		console.log(inputDays);
+		$.ajax({
+			'url': "endpoints/hospital_schedule/hospitalScheduleUpdate.php",
+			'type': "POST",
+			'data': {
+				"days": inputDays
+			},
+			success: function(response) {
+				window.location.reload();
+				//di ko na nilagay sa baba, nag eerror json parse
+				// response = JSON.parse(response);
+				// if (response.code == 200) {
+
+				// 	window.location.reload()
+				// } else if (response.code == 400) {
+				// 	console.log(response.error);
+
+				// } else {
+				// 	console.log(response.code);
+				// }
+			}
+		});
+	}
+</script>
