@@ -6,12 +6,12 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 	else{
-		$schedule_date=$_POST['schedule_date'];
+		$schedule_dateTime=$_POST['schedule_dateTime'];
 		$schedule_time=$_POST['schedule_time'];
 		$form_id=$_POST['form_id'];
 
-		$sql = "INSERT INTO schedule (schedule_date, schedule_time, form_id)
-		 VALUES ('$schedule_date', '$schedule_time', '$form_id')";
+		$sql = "INSERT INTO schedule (schedule_dateTime, form_id)
+		 VALUES ('$schedule_dateTime', '$form_id')";
 		if ($conn -> query($sql) === TRUE) {
 			$response = ["code"=>200];
 		}
