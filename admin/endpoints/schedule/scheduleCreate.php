@@ -7,7 +7,6 @@
 	}
 	else{
 		$schedule_dateTime=$_POST['schedule_dateTime'];
-		$schedule_time=$_POST['schedule_time'];
 		$form_id=$_POST['form_id'];
 
 		$sql = "INSERT INTO schedule (schedule_dateTime, form_id)
