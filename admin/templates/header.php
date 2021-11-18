@@ -20,11 +20,11 @@
         </li> -->
         <div class="dropdown">
           <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-users"></i>
-            Name of admin
+            <i class="fas fa-user"></i>
+            <p class="text-capitalize d-inline text-light"><?php echo $_COOKIE["name"]; ?></p>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Account</a></li>
+            <li><a class="dropdown-item" href="user-list.php">Account</a></li>
             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
           </ul>
         </div>
