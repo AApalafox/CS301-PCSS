@@ -55,7 +55,7 @@ $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
 						<td>
 						<button class="chg btn fas fa-edit px-3 bg-dark" href="#" value="', $row[$ajaxVar[0]], '"></button>
 							<button class="del btn fas fa-trash-alt bg-danger" href="#" value="', $row[$ajaxVar[0]], '"></button>
-							<button class="upd btn fas fa-check-square" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
+							<button class="upd btn fas fa-check-square bg-success" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
 						</td>
 						';
 						echo '</tr>';
@@ -88,8 +88,8 @@ $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
 			echo '$(this).parent().parent().find(\'td:eq(', $i, ')\').html("<input>");';
 		?>
 		$(this).hide();
-		$(this).parent().find('a:eq(0)').hide();
-		$(this).parent().find('a:eq(2)').show();
+		$(this).parent().find('button:eq(1)').hide();
+		$(this).parent().find('button:eq(2)').show();
 	});
 
 	//update function per Table Row
