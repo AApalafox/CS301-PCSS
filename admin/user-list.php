@@ -24,76 +24,8 @@
 		<!-- page content -->
 		<div class="container">
 			<label class="caption-body">User List</label>
-			<table class="table table-hover  align-middle">
-				<thead>
-					<tr>
-						<th scope="col">
-							ID
-							<button type="button" class="btn">
-								<i class="fas fa-arrow-up"></i>
-							</button>
-							<button type="button" class="btn">
-								<i class="fas fa-arrow-down"></i>
-							</button>
-						</th>
-						<th scope="col">Name</th>
-						<th scope="col">Username</th>
-						<th scope="col">
-							Action
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark Otto</td>
-						<td>markOtto</td>
-						<td>
-							<button type="button" class="btn">
-								<i class="fas fa-eye"></i>
-							</button>
-							<button type="button" class="btn">
-								<i class="fas fa-edit"></i>
-							</button>
-							<button type="button" class="btn">
-								<i class="fas fa-trash-alt"></i>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark Otto</td>
-						<td>markOtto</td>
-						<td>
-							<button type="button" class="btn">
-								<i class="fas fa-eye"></i>
-							</button>
-							<button type="button" class="btn">
-								<i class="fas fa-edit"></i>
-							</button>
-							<button type="button" class="btn">
-								<i class="fas fa-trash-alt"></i>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark Otto</td>
-						<td>markOtto</td>
-						<td>
-							<button type="button" class="btn">
-								<i class="fas fa-eye"></i>
-							</button>
-							<button type="button" class="btn">
-								<i class="fas fa-edit"></i>
-							</button>
-							<button type="button" class="btn">
-								<i class="fas fa-trash-alt"></i>
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<!-- Display the list below -->
+			<div id="displayConsultant"></div>
 		</div>
 		<hr>
 		<?php include 'templates/bottom-nav.php'; ?>
@@ -101,3 +33,19 @@
 </body>
 
 </html>
+
+<script>
+	$(document).ready(displayConsultantList());
+
+	function displayConsultantList() {
+		var str = "all"
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("displayConsultant").innerHTML = this.responseText;
+			}
+		};
+		xmlhttp.open("GET", "handlers/displayConsultantHandler.php?q=" + str, true);
+		xmlhttp.send();
+	}
+</script>

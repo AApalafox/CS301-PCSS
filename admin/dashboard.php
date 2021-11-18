@@ -48,7 +48,7 @@ if(!isset($_COOKIE["id"])){
 	const d = new Date();
 	month = d.getMonth() + 1; //returns indexed 0, so plus 1 to offset
 	const today = d.getFullYear() + '-' + month + '-' + d.getDate();
-	console.log(today);
+	// console.log(today);
 	$(document).ready(function() {
 
 		$('#calendar').fullCalendar({
