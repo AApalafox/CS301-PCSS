@@ -87,7 +87,19 @@
 
 				</div>
 				<div class="col">
-					Time input for schedule
+					Hospital Hours
+					<div class="my-3 row">
+						<label for="opening" class="col-sm-2 col-form-label">Opening</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="opening" value="">
+						</div>
+					</div>
+					<div class="mb-3 row">
+						<label for="closing" class="col-sm-2 col-form-label">Closing</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="closing" value="">
+						</div>
+					</div>
 				</div>
 				<hr>
 				<p id="daysModified"></p>
@@ -112,7 +124,10 @@
 		document.getElementById("daysModified").innerHTML = 'Last modified: ' + daysModified;
 		// console.log(days, daysModified);
 		time = hospital_schedule[1]['value'];
-		timeModified = hospital_schedule[1]['date_created'];
+		time = time.split(" - ");
+		// console.log(time);
+		document.getElementById("opening").value = time[0];
+		document.getElementById("closing").value = time[1];
 		// console.log(time, timeModified);
 
 		for (var i = 0; i < days.length; i++) {
@@ -127,15 +142,16 @@
 			if (document.getElementById(days[i]).checked) {
 				inputDays.push(document.getElementById(days[i]).value);
 			}
-
 		}
 		inputDays = inputDays.toString();
-		console.log(inputDays);
+		inputTime = document.getElementById("opening").value + " - " + document.getElementById("closing").value;
+		console.log(inputDays, inputTime);
 		$.ajax({
 			'url': "endpoints/hospital_schedule/hospitalScheduleUpdate.php",
 			'type': "POST",
 			'data': {
-				"days": inputDays
+				"days": inputDays,
+				"time": inputTime
 			},
 			success: function(response) {
 				window.location.reload();
@@ -151,6 +167,7 @@
 				// 	console.log(response.code);
 				// }
 			}
+
 		});
 	}
 </script>

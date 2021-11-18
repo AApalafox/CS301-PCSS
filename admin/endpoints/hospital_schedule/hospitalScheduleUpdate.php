@@ -5,10 +5,11 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 } else {
 	$days = $_POST['days'];
-	echo $days . 'endpoint';
-	$sql = "UPDATE hospital_schedule SET 
-		value = '$days'
-		WHERE field_name='days'";
+	$time = $_POST['time'];
+	echo $days .$time. 'endpoint';
+	$sql = "UPDATE hospital_schedule SET value = CASE WHEN field_name='days' THEN '$days' 
+	ELSE '$time' END
+	WHERE field_name IN ('days','time')";
 	if ($conn->query($sql) === TRUE) {
 		$response = ["code" => 200];
 	} else {
