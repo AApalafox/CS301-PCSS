@@ -14,7 +14,7 @@
 		$job=$_POST['job'];
 
 		$sql = "UPDATE consultant SET 
-		fname='$lname', 
+		fname='$fname', 
 		lname='$lname', 
 		email='$email', 
 		password='$password',
