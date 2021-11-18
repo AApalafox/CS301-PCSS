@@ -2,7 +2,7 @@
 	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	<a href="dashboard.php"><i class="fas fa-columns fa-1x"></i>Dashboard</a>
 	<a href="consultation-list.php"><i class="fas fa-calendar-alt fa-1x"></i>Consultations</a>
-	<a href="hospital-hours.php"><i class="fas fa-clock fa-1x"></i>Schedules</a>
+	<a href="hospital-hours.php"><i class="fas fa-clock fa-1x"></i>Hospital</a>
 	<a href="notification.php"><i class="fas fa-bell fa-1x"></i>Notifications</a>
 	<a href="user-list.php"><i class="fas fa-users fa-1x"></i>Users</a>
 </div>
