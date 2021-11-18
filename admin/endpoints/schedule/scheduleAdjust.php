@@ -6,10 +6,9 @@
 	}
 	else{
 		$schedule_id= $_POST['schedule_id'];
-		$schedule_date=$_POST['schedule_date'];
-		$schedule_time=$_POST['schedule_time'];
+		$schedule_dateTime=$_POST['schedule_dateTime'];
 
-		$sql = "UPDATE schedule SET schedule_time='$schedule_time', schedule_date='$schedule_date' WHERE schedule_id='$schedule_id'";
+		$sql = "UPDATE schedule SET schedule_dateTime='$schedule_dateTime' WHERE schedule_id='$schedule_id'";
 		if ($conn -> query($sql) === TRUE) {
 			$response = ["code"=>200];
 		}
