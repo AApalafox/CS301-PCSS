@@ -51,13 +51,13 @@ $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
 						echo '<tr>';
 						for ($i = 0; $i < count($ajaxVar); $i++)
 							echo '<td>', $row[$ajaxVar[$i]], '</td>';
-						
+						echo '
 						<td>
 						<button class="chg btn fas fa-edit px-3 bg-dark" href="#" value="', $row[$ajaxVar[0]], '"></button>
 							<button class="del btn fas fa-trash-alt bg-danger" href="#" value="', $row[$ajaxVar[0]], '"></button>
 							<button class="upd btn fas fa-check-square" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
 						</td>
-						
+						';
 						echo '</tr>';
 					}
 					?>
