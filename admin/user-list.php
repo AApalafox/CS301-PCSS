@@ -106,7 +106,7 @@ $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
 				<?php
 				for ($i = 1; $i < count($ajaxVar); $i++)
 					echo $ajaxVar[$i], ': $(e).find(\'td:eq(', $i, ')\').find(\'input\').val(),';
-				?>,
+				?>
 			},
 			success: function(response) {
 				response = JSON.parse(response);
