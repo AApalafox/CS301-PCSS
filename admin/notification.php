@@ -42,8 +42,16 @@
 
 					<button class="btn btnSquare">Save</button>
 				</div>
-				<div class="col">
-
+				<div class="col ">
+					<div class="container mt-3 text-center">
+						<p>Send them an email</p>
+						<a href="https://mail.google.com/" target="_blank">
+							<button class="btn btnSquare fw-bold">
+								<i class="fas fa-envelope">
+								</i> Send a custom message
+							</button>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
