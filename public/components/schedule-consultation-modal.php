@@ -67,9 +67,6 @@
 						<label class="form-label caption-body">Consultation Date and Time</label>
 						<div class="">
 							<input type="text" class="form-control isInvalid" id="datetime2" readonly required>
-							<div class="invalid-feedback">
-								Please enter your reason for consultation
-							</div>
 						</div>
 					</div>
 				</div><!-- end of modal body -->
