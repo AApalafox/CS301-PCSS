@@ -10,7 +10,7 @@
 	
 </head>
 
-<body class="">
+<body id="bodyContainer">
 	<?php include 'templates/header.php'; ?>
 
 	<?php include 'components/schedule-consultation-modal.php'; ?>
