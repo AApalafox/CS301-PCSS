@@ -47,15 +47,12 @@
 </nav>
 
 <script>
-  function checkSession() {
-    window.location.replace("components/login.php");
+  
+  $("#scheduleBtn").click(function(){
+    if(!(getCookie("type"))){
+      $('#loginModal').modal('show');
+    }
 
-    // not sure kung pano to gawin na checking if logged in na ba user
-    //proceed to open modal if id in cookie is not empty
-    // if (id) {
-    //   $('#addScheduleModal').modal('show');
-    // } else { //go to login page
-    //   window.location.replace("components/login.php");
-    // }
-  }
+    else $('#addScheduleModal').modal('show');
+  });
 </script>
