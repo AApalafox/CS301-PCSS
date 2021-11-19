@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-	include("endpoints/db.php");
-	$sql = "SELECT * FROM schedule";
-	$result1 = $conn->query($sql);
-	if ($result1->num_rows > 0) {
-		$result1 = ($result1->fetch_all(MYSQLI_ASSOC));
-	}
-	if (!isset($_COOKIE["id"])) {
-		header("location:index.php");
-	}
-	
+<?php
+include("endpoints/db.php");
+$sql = "SELECT s.schedule_id as id, CONCAT(p.fname,' ',p.lname) as name, 
+	p.email, p.phone, p.birthdate, f.condition, f.reason, s.schedule_dateTime, s.status
+	FROM schedule as s
+	JOIN form as f
+	on f.form_id = s.form_id
+	JOIN patient AS p
+	on f.patient_id = p.patient_id";
 
-	$ajaxVar = ["schedule_id", "schedule_dateTime", "status", "form_id"];
-	$placeholder = ["ID", "Date", "Time", "Status", "Form ID", "Name"];
+$result1 = $conn->query($sql);
+if ($result1->num_rows > 0) {
+	$result1 = ($result1->fetch_all(MYSQLI_ASSOC));
+}
+// print_r($result1);
+if (!isset($_COOKIE["id"])) {
+	header("location:index.php");
+}
+
+mysqli_close($conn);
+
+$ajaxVar = ["id", "name", "email", "phone", "schedule_dateTime", "status", "view"];
+$placeholder = ["ID", "Patient", "Email", "Phone", "Date", "Status", "View/Delete"];
 ?>
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,11 +33,14 @@
 
 	<?php include 'assets/links.php'; ?>
 	<style>
-		input#dateTime{
-			min-width:138px; display:inline;
+		input#dateTime {
+			max-width: 145px;
+			display: inline;
 		}
-		input#status{
-			min-width:90px; display:inline;
+
+		input#status {
+			max-width: 80px;
+			display: inline;
 		}
 	</style>
 
@@ -49,44 +62,54 @@
 			<table class="table table-hover align-middle" id="myTable">
 				<thead>
 					<tr>
-						<?php 
-							for($i = 0; $i <count($ajaxVar); $i++)
-								echo '<th>',$ajaxVar[$i],'</th>';
+						<?php
+						for ($i = 0; $i < count($placeholder); $i++)
+							echo '<th>', $placeholder[$i], '</th>';
 						?>
 					</tr>
 				</thead>
 				<tbody>
-				<?php
+					<?php
 
+					foreach ($result1 as $row) {
+						// print_r($row);
+						echo '<br>';
 
-				foreach($result1 as $row){
-					echo '<tr>';
-					for ($i = 0; $i < count($ajaxVar); $i++){
-						if($ajaxVar[$i]=="status"){
-							echo '
+						echo '<tr>';
+						for ($i = 0; $i < count($ajaxVar); $i++) {
+							if ($ajaxVar[$i] == "status") {
+								echo '
 							<td>
-							<input type="text" class="form-control" readonly id="status" value="',$row[$ajaxVar[$i]],'">
-							<p style="display:none">',$row[$ajaxVar[$i]],'</p>
+							<input type="text" class="form-control" readonly id="status" value="', $row[$ajaxVar[$i]], '">
+							<p style="display:none">', $row[$ajaxVar[$i]], '</p>
 							<button id="statusUpd" class="btn fas fa-check-square bg-success" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
 							';
-						}
-						else if($ajaxVar[$i]!="schedule_dateTime"){
-							echo '<td>', $row[$ajaxVar[$i]];
-						}
-						else{
-							echo '
+							} else if ($ajaxVar[$i] == "view") {
+								echo '
 								<td>
-								<input type="text" class="form-control" readonly id="dateTime" value="',substr($row[$ajaxVar[$i]], 0, -3),'">
-								<p style="display:none">',substr($row[$ajaxVar[$i]], 0, -3),'</p>
+								<button class="chg btn fas fa-eye px-3 bg-dark" onclick="viewSchedule(this.value)" href="#" value="', $row["id"], '/', $row["name"],
+								'/', $row["email"], '/', $row["phone"], '/', $row["birthdate"], '/', $row["condition"], '/', $row["reason"],
+								'/', $row["schedule_dateTime"], '/', $row["status"], '"></button>
+								<button class="del btn fas fa-trash-alt bg-danger" href="#" value="', $row[$ajaxVar[0]], '"></button>
+								</td>
+								';
+								// These are elements in ajaxVar but also not dateTime, bacase there are other items not included in ajaxVar
+							} else if (in_array($ajaxVar[$i], $ajaxVar) && $ajaxVar[$i] != "schedule_dateTime") {
+								echo '<td>', $row[$ajaxVar[$i]];
+							} else {
+								echo '
+								<td>
+								<input type="text" class="form-control" readonly id="dateTime" value="', substr($row[$ajaxVar[$i]], 0, -3), '">
+								<p style="display:none">', substr($row[$ajaxVar[$i]], 0, -3), '</p>
 								<button id="dateUpd" class="btn fas fa-check-square bg-success" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
 							';
+							}
+							echo '</td>';
 						}
-						echo '</td>';
+						echo '</tr>';
 					}
-					echo '</tr>';
-				}
-
-				?>
+					include 'modal-schedule-details.php';
+					?>
 				</tbody>
 			</table>
 		</div>
@@ -102,13 +125,12 @@
 			format: 'yyyy-mm-dd hh:ii',
 			autoclose: true
 		})
-		.change(function (){
+		.change(function() {
 			$("#dateUpd").show();
 			dateTime = $(this).val();
-		})
-	;
+		});
 
-	$("#dateUpd").click(function(){
+	$("#dateUpd").click(function() {
 		$("#dateUpd").hide();
 		dateId = $(this).val();
 		scheduleAdjust(dateTime, dateId);
@@ -118,40 +140,39 @@
 	//status jQueries
 	var schedStat, schedId;
 	$("#status")
-		.focus(function(){
-			$(this).attr("readonly", false); 
+		.focus(function() {
+			$(this).attr("readonly", false);
 		})
-		.focusout(function(){
-			$(this).attr("readonly", true); 
+		.focusout(function() {
+			$(this).attr("readonly", true);
 		})
-		.change(function(){
+		.change(function() {
 			schedStat = ($(this).val()).toLowerCase();
 			$("#statusUpd").show();
 		})
-		.on('keypress',function(e) {
-			if(e.which == 13) {
-				$(this).attr("readonly", true); 
+		.on('keypress', function(e) {
+			if (e.which == 13) {
+				$(this).attr("readonly", true);
 			}
-		})
-	;
-	$("#statusUpd").click(function(){
+		});
+	$("#statusUpd").click(function() {
 		schedId = $(this).val();
 		scheduleUpdateStatus(schedStat, schedId);
 	});
 	//status jQueries
 
 	//display Table
-	$(document).ready(function () {
-	    $('#myTable').dataTable();
+	$(document).ready(function() {
+		$('#myTable').dataTable();
 	});
 
-	function scheduleAdjust(dT, dI){
+	function scheduleAdjust(dT, dI) {
 		$.ajax({
 			'url': "endpoints/schedule/scheduleAdjust.php",
 			'type': "POST",
 			'data': {
 				<?= $ajaxVar[0] ?>: dI,
-				<?= $ajaxVar[1] ?>: (dT+":00"),
+				<?= $ajaxVar[1] ?>: (dT + ":00"),
 			},
 			success: function(response) {
 				response = JSON.parse(response);
@@ -166,7 +187,8 @@
 			}
 		});
 	}
-	function scheduleUpdateStatus(status, id){
+
+	function scheduleUpdateStatus(status, id) {
 		$.ajax({
 			'url': "endpoints/schedule/scheduleUpdateStatus.php",
 			'type': "POST",
@@ -187,5 +209,18 @@
 			}
 		});
 	}
+
+	function viewSchedule(details) {
+		console.log(details);
+		details = details.split('/');
+		//schedule id, name, email, phone, birthdate, condition, reason, date, status
+		tagId = ['#scheduleId', '#patientName', '#email', '#phone', '#birthdate', '#condition', '#reason', '#date', '#status', ]
+		console.log(details);
+		for(var i=0; i < details.length; i++){
+			$(tagId[i]).html(details[i]);
+		}
+		$('#modalScheduleDetails').modal('show');
+	}
 </script>
+
 </html>

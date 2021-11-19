@@ -45,7 +45,7 @@ $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
 						<?php
 						for ($i = 0; $i < count($placeholder); $i++)
 							echo '<th class="">', $placeholder[$i], '</th>';
-						echo '<td class="">Edit/Delete</td>';
+						echo '<th class="">Edit/Delete</td>';
 						?>
 					</tr>
 				</thead>
