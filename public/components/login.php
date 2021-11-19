@@ -3,7 +3,7 @@
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<form id="loginForm" method="POST">
-				<div class="modal-header">
+				<div class="modal-header justify-content-center">
 					<a href="index.php">
 						<h1 class="caption-body fw-bold mt-3">Login</h1>
 					</a>
