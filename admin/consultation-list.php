@@ -46,19 +46,10 @@
 			<table class="table table-hover align-middle">
 				<thead>
 					<tr>
-						<th scope="col">ID</th>
-						<th scope="col">Name</th>
-						<th scope="col">
-							Schedule
-							<button type="button" class="btn">
-								<i class="fas fa-arrow-up"></i>
-							</button>
-							<button type="button" class="btn">
-								<i class="fas fa-arrow-down"></i>
-							</button>
-						</th>
-						<th scope="col">Status</th>
-						<th scope="col">Action</th>
+						<?php 
+							for($i = 0; $i <count($ajaxVar); $i++)
+								echo '<th>',$ajaxVar[$i],'</th>';
+						?>
 					</tr>
 				</thead>
 				<tbody>
