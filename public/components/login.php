@@ -1,12 +1,11 @@
 
-<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal"data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<form id="loginForm" method="POST">
 				<div class="modal-header">
 					<a href="index.php">
 						<h1 class="caption-body fw-bold mt-3">Login</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</a>
 				</div>
 				<div class="modal-body">
