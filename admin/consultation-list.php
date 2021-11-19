@@ -125,7 +125,7 @@
 			$(this).attr("readonly", true); 
 		})
 		.change(function(){
-			schedStat = $(this).val();
+			schedStat = ($(this).val()).toLowerCase();
 			$("#statusUpd").show();
 		})
 		.on('keypress',function(e) {
