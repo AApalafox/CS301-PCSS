@@ -49,7 +49,7 @@ $("#loginForm").bind('submit', function(e){
 function validatePatient(record) {
 	var tite= "tite";
 	$.ajax({
-		'url': "endpoints/validatePatient.php",
+		'url': "config/endpoints/validatePatient.php",
 		'type': "POST",
 		'data': {
 			'email': record[0],
