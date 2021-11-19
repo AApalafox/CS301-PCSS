@@ -7,6 +7,9 @@
 	if ($result1->num_rows > 0) {
 		$result1 = ($result1->fetch_all(MYSQLI_ASSOC));
 	}
+	if (!isset($_COOKIE["id"])) {
+		header("location:index.php");
+	}
 	
 
 	$ajaxVar = ["schedule_id", "schedule_dateTime", "status", "form_id"];
