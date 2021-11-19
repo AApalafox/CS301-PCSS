@@ -40,7 +40,7 @@
 
     </div> <!-- navbar-collapse.// -->
     <div class="ms-auto">
-      <button type="button" class="btn" onclick="checkSession()">Schedule Consultation</button>
+      <button type="button" class="btn"  id="scheduleBtn">Schedule Consultation</button>
     </div>
 
   </div> <!-- container-fluid.// -->
@@ -49,7 +49,7 @@
 <script>
   
   $("#scheduleBtn").click(function(){
-    if(!(getCookie("type"))){
+    if(!(Cookies.get("type"))){
       $('#loginModal').modal('show');
     }
 
