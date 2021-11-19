@@ -14,7 +14,9 @@
 	<?php include 'templates/header.php'; ?>
 
 	<?php include 'components/schedule-consultation-modal.php'; ?>
-
+	
+	<?php include 'components/login.php'; ?>
+	
 	<div class="position-relative component">
 		<?php include 'components/img-carousel.php'; ?>
 	</div>
