@@ -43,7 +43,7 @@
 		<!-- page content -->
 		<div class="container">
 			<label class="caption-body">Consultation List</label>
-			<table class="table table-hover align-middle">
+			<table class="table table-hover align-middle" id="myTable">
 				<thead>
 					<tr>
 						<?php 
