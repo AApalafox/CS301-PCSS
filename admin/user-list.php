@@ -2,6 +2,10 @@
 <html lang="en">
 
 <?php
+if (!isset($_COOKIE["id"])) {
+	header("location:index.php");
+}
+	
 include("endpoints/db.php");
 $sql = "SELECT * FROM consultant";
 $result = $conn->query($sql);
