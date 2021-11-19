@@ -38,10 +38,8 @@
 	//onsubmit function
 	$("#loginForm").bind('submit', function(e){
 		var record = [$("#emailLogin").val(),$("#passwordLogin").val()];
-		 validatePatient(record);
-		if(!isValid){
-			$("#invalidInput").show();
-		}
+		validatePatient(record);
+		$("#invalidInput").show();
 		return false;
 	});
 
@@ -49,7 +47,7 @@
 	function validatePatient(record) {
 		var tite= "tite";
 		$.ajax({
-			'url': "endpoints/validatePatient.php",
+			'url': "config/endpoints/validatePatient.php",
 			'type': "POST",
 			'data': {
 				'email': record[0],
