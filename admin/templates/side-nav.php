@@ -25,7 +25,7 @@
 		let x = $(".sidenav a:eq("+(i+1)+")");
 
 		//here adds ID on the sideNav options
-		x.attr('id', "sidenav"+pageNames[0]);
+		x.attr('id', "sidenav"+pageNames[i]);
 
 		//adds highlighter depending on the current page
 		if($("#mySidenav").parent().attr('id').substring(4)==pageNames[i]){
