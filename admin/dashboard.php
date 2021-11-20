@@ -65,6 +65,11 @@ mysqli_close($conn);
 	// console.log(today);
 
 	var schedules = <?php echo json_encode($phpschedules) ?>;
+	for(var i = 0; i < schedules.length; i++){
+		q = schedules[i].title;
+		console.log(q);
+		schedules[i].url = "consultation-list.php?q="+q;
+	}
 	console.log(schedules);
 
 	$(document).ready(function() {
@@ -77,7 +82,7 @@ mysqli_close($conn);
 			},
 			defaultDate: today,
 			navLinks: true, // can click day/week names to navigate views
-			editable: false,
+			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			events: schedules
 		});

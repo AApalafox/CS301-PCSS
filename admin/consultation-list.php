@@ -23,6 +23,12 @@ mysqli_close($conn);
 
 $ajaxVar = ["id", "name", "email", "phone", "schedule_dateTime", "status", "view"];
 $placeholder = ["ID", "Patient", "Email", "Phone", "Date", "Status", "View/Delete"];
+
+$query_Id = 'empty';
+if (isset($_GET['q'])) {
+	$query_Id = $_GET['q'];
+}
+
 ?>
 
 <head>
@@ -166,6 +172,15 @@ $placeholder = ["ID", "Patient", "Email", "Phone", "Date", "Status", "View/Delet
 		$('#myTable').dataTable();
 	});
 
+	query_Id = '<?php echo $query_Id ?>';
+	if (query_Id != 'empty') {
+		$('#myTable').dataTable({
+			"search": {
+				"search": query_Id
+			}
+		});
+	}
+
 	function scheduleAdjust(dT, dI) {
 		$.ajax({
 			'url': "endpoints/schedule/scheduleAdjust.php",
@@ -216,7 +231,7 @@ $placeholder = ["ID", "Patient", "Email", "Phone", "Date", "Status", "View/Delet
 		//schedule id, name, email, phone, birthdate, condition, reason, date, status
 		tagId = ['#scheduleId', '#patientName', '#email', '#phone', '#birthdate', '#condition', '#reason', '#date', '#status', ]
 		console.log(details);
-		for(var i=0; i < details.length; i++){
+		for (var i = 0; i < details.length; i++) {
 			$(tagId[i]).html(details[i]);
 		}
 		$('#modalScheduleDetails').modal('show');
