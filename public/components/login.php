@@ -56,9 +56,9 @@
 				response = JSON.parse(response);
 				if (response.code != 400) {
 					
-					Cookies.set('id', response[0].patient_id, {path: ''});
-					Cookies.set('name', response[0].name, {path: ''});
-					Cookies.set('type', "patient", {path: ''});
+					Cookies.set('id', response[0].patient_id, {path: '/pcss/public'});
+					Cookies.set('name', response[0].name, {path: '/pcss/public'});
+					Cookies.set('type', "patient", {path: '/pcss/public'});
 					window.location.reload();
 				} else {
 					console.log(response.code);
