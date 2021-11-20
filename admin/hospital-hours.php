@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+
+if(isset($_COOKIE["type"]))
+	if($_COOKIE["type"]=="patient")
+		header("location:logout.php");
+
 if (!isset($_COOKIE["id"])) {
 	header("location:index.php");
 }
