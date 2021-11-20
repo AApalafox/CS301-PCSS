@@ -44,7 +44,7 @@
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item" href="../admin/index.php">Admin</a></li>
             <li><a class="dropdown-item" href="#">Medical Records</a></li>
-            <li><a class="dropdown-item" href="components/logout.php">Logout</a></li>
+            <li><a class="dropdown-item" href="config/logout.php">Logout</a></li>
           </ul>
         </li>
       </ul>
