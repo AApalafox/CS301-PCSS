@@ -17,7 +17,7 @@
   </button>
 </div>
 
-<div class="img-caption text-center">
+<!-- <div class="img-caption text-center">
   <div class="p-4">
     <div class="caption-title">
       Umbrella Corporation
@@ -27,4 +27,4 @@
       <a href="#" class="btn">Medical Records</a>
     </div>
   </div>
-</div>
+</div> -->

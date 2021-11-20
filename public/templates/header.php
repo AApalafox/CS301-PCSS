@@ -24,10 +24,9 @@
   <div class="container-fluid content-container">
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon text-dark"></span>
+      <!-- <span class="navbar-toggler-icon bg-warning" style="background-color:#333333"></span> -->
+      <i class="fas fa-bars fa-1x"></i>
     </button>
-
-
     <div class="collapse navbar-collapse" id="main_nav">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link active" href="#"> Home </a></li>
@@ -36,30 +35,35 @@
         <li class="nav-item"><a class="nav-link" href="#doctors"> Doctors </a></li>
         <li class="nav-item"><a class="nav-link" href="#department"> Departments </a></li>
         <li class="nav-item"><a class="nav-link" href="#contact"> Contact </a></li>
+        <li class="nav-item dropdown" id="accountLogout">
+          <div class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+            <i class="fas fa-user text-light"></i>
+            <p class="text-capitalize d-inline text-light"></p>
+          </div>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="../admin/index.php">Admin</a></li>
+            <li><a class="dropdown-item" href="#">Medical Records</a></li>
+            <li><a class="dropdown-item" href="components/logout.php">Logout</a></li>
+          </ul>
+        </li>
       </ul>
 
     </div> <!-- navbar-collapse.// -->
     <div class="ms-auto">
       <button type="button" class="btn" id="scheduleBtn">Schedule Consultation</button>
     </div>
-    <div class="dropdown ms-auto" style="visibility:hidden" id="accountLogout">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <p class="text-capitalize d-inline text-light">Account</p>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="components/logout.php">Logout</a></li>
-      </ul>
-    </div>
+
 
   </div> <!-- container-fluid.// -->
 </nav>
 
 <script>
-  if (Cookies.get("type")) {
-    $('#accountLogout').css("visibility", "visible");
-  } else {
-    $('#accountLogout').css("visibility", "hidden");
-  }
+  // if (Cookies.get("type")) {
+  //   $('#accountLogout').css("visibility", "visible");
+  // } else {
+  //   $('#accountLogout').css("visibility", "hidden");
+  // }
   $("#scheduleBtn").click(function() {
     if (!(Cookies.get("type"))) {
       $('#loginModal').modal('show');
