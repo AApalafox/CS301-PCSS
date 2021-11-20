@@ -32,14 +32,14 @@
 		<?php include 'components/services-cards.php' ?>
 	</div>
 
-	<div class="container component">
+	<div class="container component" id="doctors">
 		<div class="text-center mb-4 brand ">
 				<h2>Meet your Trustworthy Doctors</h2>
 		</div>
 		<?php include 'components/doctor-cards.php'; ?>
 	</div>
 	
-	<div class="content-container component">
+	<div class="content-container component" id="department">
 		<div class="text-center mb-4 brand ">
 				<h2>Departments</h2>
 		</div>
@@ -50,7 +50,7 @@
 		<?php include 'components/testimonies-carousel.php' ?>
 	</div>
 
-	<div class="container">
+	<div class="container" id="contact">
 		<?php include 'components/schedule.php'; ?>
 	</div>
 	
