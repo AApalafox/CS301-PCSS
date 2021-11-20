@@ -3,6 +3,7 @@
 <footer>
 	<div class=" mt-5">
 		<div class="card-footer bg-white">
+			<!--
 			<div class="row mb-4">
 				<div class="col-md-4 col-sm-4 col-xs-4">
 					<div class="footer-text pull-left">
@@ -41,6 +42,7 @@
 					</ul>
 				</div>
 			</div>
+			-->
 			<div class="divider mb-4"> </div>
 			<div class="row" style="font-size:10px;">
 				<div class="col-md-6 col-sm-6 col-xs-6">
