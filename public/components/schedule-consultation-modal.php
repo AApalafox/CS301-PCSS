@@ -32,7 +32,7 @@
 								}
 							?>
 
-							<!-- maybe delete below -->
+							<!-- maybe delete this 
 							<label class="form-label caption-body">Have you ever undergone surgery?</label>
 							<div class="form-check">
 								<input type="radio" class="form-check-input" id="surgery-yes" name="surgery-radio" required>
@@ -43,7 +43,7 @@
 								<label class="form-check-label" for="surgery-no">No</label>
 								<div class="invalid-feedback">Please select either Yes or No</div>
 							</div>
-							<!-- maybe delete above -->
+							maybe delete this -->
 							
 						</div>
 					</div>
