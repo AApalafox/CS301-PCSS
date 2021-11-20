@@ -3,7 +3,7 @@
 <?php
 include("endpoints/db.php");
 $sql = "SELECT s.schedule_id as id, CONCAT(p.fname,' ',p.lname) as name, 
-	p.email, p.phone, p.birthdate, f.condition, f.reason, s.schedule_dateTime, s.status
+	p.birthdate, f.condition, f.reason, s.schedule_dateTime, s.status
 	FROM schedule as s
 	JOIN form as f
 	on f.form_id = s.form_id
@@ -24,8 +24,8 @@ if (!isset($_COOKIE["id"])) {
 
 mysqli_close($conn);
 
-$ajaxVar = ["id", "name", "email", "phone", "schedule_dateTime", "status", "view"];
-$placeholder = ["ID", "Patient", "Email", "Phone", "Date", "Status", "View/Delete"];
+$ajaxVar = ["id", "name", "schedule_dateTime", "status", "view"];
+$placeholder = ["ID", "Patient", "Date", "Status", "View/Delete"];
 
 $query_Id = 'empty';
 if (isset($_GET['q'])) {
@@ -99,8 +99,6 @@ if (isset($_GET['q'])) {
 								<button class="chg btn fas fa-eye px-3 bg-dark" onclick="viewSchedule(this.value)" href="#" value="', 
 									$row["id"], '/', 
 									$row["name"],'/',
-									$row["email"], '/',
-									$row["phone"], '/',
 									$row["birthdate"], '/', 
 									$row["condition"], '/', 
 									$row["reason"],'/', 
@@ -241,8 +239,8 @@ if (isset($_GET['q'])) {
 	function viewSchedule(details) {
 		console.log(details);
 		details = details.split('/');
-		//schedule id, name, email, phone, birthdate, condition, reason, date, status
-		tagId = ['scheduleId', 'patientName', 'email', 'phone', 'birthdate', 'condition', 'reason', 'date', 'status', ]
+		//schedule id, name, birthdate, condition, reason, date, status
+		tagId = ['scheduleId', 'patientName', 'birthdate', 'condition', 'reason', 'date', 'status', ]
 		console.log(details);
 		for(var i=0; i < details.length; i++){
 			$("#"+tagId[i]).html(details[i]);
