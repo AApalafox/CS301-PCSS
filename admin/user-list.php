@@ -67,11 +67,19 @@ $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
 						';
 						echo '</tr>';
 					}
+					include 'modal-add-user.php';
 					?>
 				</tbody>
 			</table><!-- end of myTable-->
 		</div>
 		<hr>
+		<div class="d-flex justify-content-center">
+
+			<button class="btn btnSquare" onclick="modalAddUser()">
+				<i class="fas fa-plus"></i>
+				Add User
+			</button>
+		</div>
 		<?php include 'templates/bottom-nav.php'; ?>
 	</div>
 </body>
@@ -149,5 +157,9 @@ $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
 				}
 			}
 		});
+	}
+
+	function modalAddUser() {
+		$('#modalAddUser').modal('show');
 	}
 </script>
