@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="main_nav">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link active" href="#"> Home </a></li>
-        <li class="nav-item"><a class="nav-link" href="#top"> About Us </a></li>
+        <!--<li class="nav-item"><a class="nav-link" href="#top"> About Us </a></li>-->
         <li class="nav-item"><a class="nav-link" href="#services"> Services </a></li>
         <li class="nav-item"><a class="nav-link" href="#doctors"> Doctors </a></li>
         <li class="nav-item"><a class="nav-link" href="#department"> Departments </a></li>
