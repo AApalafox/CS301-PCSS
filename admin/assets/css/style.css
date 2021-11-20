@@ -154,6 +154,21 @@ td>input {
   color: white;
 }
 
+.sidebar a.currentPage{
+	background-color: #e5ecef;
+	font-weight: bold;
+  	color: #000000;
+  	transition: text-shadow 0.075s ease-in-out, background-color 0.105s ease-in-out;
+}
+.sidebar a.currentPage:hover{
+	background-color: white;
+  	color: #545151;
+	font-weight: bold;
+  	text-shadow: 6px 6px 4px grey;
+  	transition: text-shadow 0.075s ease-in-out, background-color 0.105s ease-in-out;
+}
+
+
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
   margin-left: 200px;
