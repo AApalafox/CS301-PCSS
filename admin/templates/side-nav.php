@@ -17,6 +17,23 @@
 </div>
 
 <script>
+	//adds ID for all sideNav options
+	//this should be update if ever new page is added here
+	const pageNames = ["Dashboard","Consultations","Hospital","Notifications", "Users"]
+	for(let i = 0; i < pageNames.length; i++){
+		//this x is for convenience only
+		let x = $(".sidenav a:eq("+(i+1)+")");
+
+		//here adds ID on the sideNav options
+		x.attr('id', "sidenav"+pageNames[0]);
+
+		//adds highlighter depending on the current page
+		if($("#mySidenav").parent().attr('id').substring(4)==pageNames[i]){
+			x.attr('class', "bg-light");
+		}
+	}
+
+	
 	/* Set the width of the side navigation to 250px */
 	function openNav() {
 		document.getElementById("mySidenav").style.width = "16%";
