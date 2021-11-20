@@ -26,7 +26,7 @@
 					</div>
 				</div>
 				<div class="modal-footer justify-content-between mx-3 my-2">
-					<a href="/compoonents/register.php" class="text-decoration-underline fst-italic">Register new Account</a>
+					<a href="compoonents/register.php" class="text-decoration-underline fst-italic">Register new Account</a>
 					<button type="submit" class="btn btnSquare" id="loginBtn" name="login">Login</button>
 				</div>
 			</form>
