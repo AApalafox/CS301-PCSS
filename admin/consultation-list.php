@@ -91,8 +91,15 @@ if (isset($_GET['q'])) {
 							if ($ajaxVar[$i] == "status") {
 								echo '
 							<td>
-							<input type="text" class="form-control status" readonly value="', $row[$ajaxVar[$i]], '">
-							<p style="display:none">', $row[$ajaxVar[$i]], '</p>
+							
+							<div class="navbar" style="display:inline">
+								<input type="text" class="status dropdown-toggle form-control bg-light"readonly data-bs-toggle="dropdown" value="', $row[$ajaxVar[$i]], '" dummy="', $row[$ajaxVar[$i]], '">
+								<ul class="dropdown-menu">
+									<li><a class="statusChg dropdown-item" value="', $row[$ajaxVar[0]], '">Success</a></li>
+									<li><a class="statusChg dropdown-item" value="', $row[$ajaxVar[0]], '">Pending</a></li>
+									<li><a class="statusChg dropdown-item" value="', $row[$ajaxVar[0]], '">Cancelled</a></li>
+								</ul>
+							</div>
 							<button class="statusUpd btn fas fa-check-square bg-success" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
 							';
 							} else if ($ajaxVar[$i] == "view") {
@@ -115,7 +122,7 @@ if (isset($_GET['q'])) {
 							} else {
 								echo '
 								<td>
-								<input type="text" class="form-control dateTime" readonly value="', substr($row[$ajaxVar[$i]], 0, -3), '">
+								<input type="text" class="form-control dateTime bg-light" readonly value="', substr($row[$ajaxVar[$i]], 0, -3), '">
 								<p style="display:none">', substr($row[$ajaxVar[$i]], 0, -3), '</p>
 								<button class="dateUpd btn fas fa-check-square bg-success" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
 							';
@@ -156,22 +163,20 @@ if (isset($_GET['q'])) {
 
 	//status jQueries
 	var schedStat, schedId;
-	$("input.status.form-control")
-		.focus(function() {
-			$(this).attr("readonly", false);
-		})
-		.focusout(function() {
-			$(this).attr("readonly", true);
-		})
-		.change(function() {
-			schedStat = ($(this).val()).toLowerCase();
-			$(this).parent().find('button.statusUpd').show();
-		})
-		.on('keypress', function(e) {
-			if (e.which == 13) {
-				$(this).attr("readonly", true);
-			}
-		});
+	$("a.statusChg").click(function(){
+		current = $(this).parent().parent().parent();
+		//goes to the <input>, top of it that <a> selected
+		
+		if(current.find('input').attr("dummy") == $(this).text()){
+			current.parent().find('button.statusUpd').hide();
+		}
+		else{
+			schedStat = $(this).text();
+			current.parent().find('button.statusUpd').show();
+			//goes to the <td> of that row, and activates the confirm button
+		}
+		current.find('input').attr("value", $(this).text());
+	});
 	$("button.statusUpd").click(function() {
 		schedId = $(this).val();
 		scheduleUpdateStatus(schedStat, schedId);
