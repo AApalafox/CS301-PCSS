@@ -12,8 +12,8 @@
 		$password=$_POST['password'];
 		$job=$_POST['job'];
 
-		$sql = "INSERT INTO consultant (fname, lname, birthdate, password, job)
-		 VALUES ('$fname', '$lname', '$birthdate', '$password', '$job')";
+		$sql = "INSERT INTO consultant (fname, lname, email, password, job)
+		 VALUES ('$fname', '$lname', '$email', '$password', '$job')";
 		if ($conn -> query($sql) === TRUE) {
 			$response = ["code"=>200];
 		}
