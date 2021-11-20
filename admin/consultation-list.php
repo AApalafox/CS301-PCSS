@@ -14,7 +14,10 @@ $result1 = $conn->query($sql);
 if ($result1->num_rows > 0) {
 	$result1 = ($result1->fetch_all(MYSQLI_ASSOC));
 }
-// print_r($result1);
+if(isset($_COOKIE["type"]))
+	if($_COOKIE["type"]=="patient")
+		header("location:logout.php");
+
 if (!isset($_COOKIE["id"])) {
 	header("location:index.php");
 }
@@ -39,12 +42,12 @@ if (isset($_GET['q'])) {
 
 	<?php include 'assets/links.php'; ?>
 	<style>
-		input#dateTime {
+		input.dateTime {
 			max-width: 145px;
 			display: inline;
 		}
 
-		input#status {
+		input.status {
 			max-width: 80px;
 			display: inline;
 		}
@@ -79,7 +82,6 @@ if (isset($_GET['q'])) {
 					<?php
 
 					foreach ($result1 as $row) {
-						// print_r($row);
 						echo '<br>';
 
 						echo '<tr>';
@@ -87,18 +89,25 @@ if (isset($_GET['q'])) {
 							if ($ajaxVar[$i] == "status") {
 								echo '
 							<td>
-							<input type="text" class="form-control" readonly id="status" value="', $row[$ajaxVar[$i]], '">
+							<input type="text" class="form-control status" readonly value="', $row[$ajaxVar[$i]], '">
 							<p style="display:none">', $row[$ajaxVar[$i]], '</p>
-							<button id="statusUpd" class="btn fas fa-check-square bg-success" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
+							<button class="statusUpd btn fas fa-check-square bg-success" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
 							';
 							} else if ($ajaxVar[$i] == "view") {
 								echo '
 								<td>
-								<button class="chg btn fas fa-eye px-3 bg-dark" onclick="viewSchedule(this.value)" href="#" value="', $row["id"], '/', $row["name"],
-								'/', $row["email"], '/', $row["phone"], '/', $row["birthdate"], '/', $row["condition"], '/', $row["reason"],
-								'/', $row["schedule_dateTime"], '/', $row["status"], '"></button>
+								<button class="chg btn fas fa-eye px-3 bg-dark" onclick="viewSchedule(this.value)" href="#" value="', 
+									$row["id"], '/', 
+									$row["name"],'/',
+									$row["email"], '/',
+									$row["phone"], '/',
+									$row["birthdate"], '/', 
+									$row["condition"], '/', 
+									$row["reason"],'/', 
+									$row["schedule_dateTime"], '/', 
+									$row["status"], '">
+								</button>
 								<button class="del btn fas fa-trash-alt bg-danger" href="#" value="', $row[$ajaxVar[0]], '"></button>
-								</td>
 								';
 								// These are elements in ajaxVar but also not dateTime, bacase there are other items not included in ajaxVar
 							} else if (in_array($ajaxVar[$i], $ajaxVar) && $ajaxVar[$i] != "schedule_dateTime") {
@@ -106,9 +115,9 @@ if (isset($_GET['q'])) {
 							} else {
 								echo '
 								<td>
-								<input type="text" class="form-control" readonly id="dateTime" value="', substr($row[$ajaxVar[$i]], 0, -3), '">
+								<input type="text" class="form-control dateTime" readonly value="', substr($row[$ajaxVar[$i]], 0, -3), '">
 								<p style="display:none">', substr($row[$ajaxVar[$i]], 0, -3), '</p>
-								<button id="dateUpd" class="btn fas fa-check-square bg-success" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
+								<button class="dateUpd btn fas fa-check-square bg-success" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
 							';
 							}
 							echo '</td>';
@@ -127,26 +136,27 @@ if (isset($_GET['q'])) {
 <script>
 	//date jQueries
 	var dateTime, dateId;
-	$("#dateTime")
+	$(".dateTime")
 		.datetimepicker({
 			format: 'yyyy-mm-dd hh:ii',
 			autoclose: true
 		})
 		.change(function() {
-			$("#dateUpd").show();
+			$(this).parent().find('button.dateUpd').show();
 			dateTime = $(this).val();
 		});
 
-	$("#dateUpd").click(function() {
-		$("#dateUpd").hide();
+	$(".dateUpd").click(function() {
+		$(this).hide();
 		dateId = $(this).val();
+		
 		scheduleAdjust(dateTime, dateId);
 	});
 	//date jQueries
 
 	//status jQueries
 	var schedStat, schedId;
-	$("#status")
+	$("input.status.form-control")
 		.focus(function() {
 			$(this).attr("readonly", false);
 		})
@@ -155,14 +165,14 @@ if (isset($_GET['q'])) {
 		})
 		.change(function() {
 			schedStat = ($(this).val()).toLowerCase();
-			$("#statusUpd").show();
+			$(this).parent().find('button.statusUpd').show();
 		})
 		.on('keypress', function(e) {
 			if (e.which == 13) {
 				$(this).attr("readonly", true);
 			}
 		});
-	$("#statusUpd").click(function() {
+	$("button.statusUpd").click(function() {
 		schedId = $(this).val();
 		scheduleUpdateStatus(schedStat, schedId);
 	});
@@ -172,6 +182,8 @@ if (isset($_GET['q'])) {
 	$(document).ready(function() {
 		$('#myTable').dataTable();
 	});
+
+	
 
 	query_Id = '<?php echo $query_Id ?>';
 	if (query_Id != 'empty') {
@@ -187,8 +199,8 @@ if (isset($_GET['q'])) {
 			'url': "endpoints/schedule/scheduleAdjust.php",
 			'type': "POST",
 			'data': {
-				<?= $ajaxVar[0] ?>: dI,
-				<?= $ajaxVar[1] ?>: (dT + ":00"),
+				"schedule_id": dI,
+				"schedule_dateTime": (dT + ":00"),
 			},
 			success: function(response) {
 				response = JSON.parse(response);
@@ -209,8 +221,8 @@ if (isset($_GET['q'])) {
 			'url': "endpoints/schedule/scheduleUpdateStatus.php",
 			'type': "POST",
 			'data': {
-				<?= $ajaxVar[0] ?>: id,
-				<?= $ajaxVar[2] ?>: status,
+				"schedule_id": id,
+				"status": status,
 			},
 			success: function(response) {
 				response = JSON.parse(response);
@@ -230,10 +242,10 @@ if (isset($_GET['q'])) {
 		console.log(details);
 		details = details.split('/');
 		//schedule id, name, email, phone, birthdate, condition, reason, date, status
-		tagId = ['#scheduleId', '#patientName', '#email', '#phone', '#birthdate', '#condition', '#reason', '#date', '#status', ]
+		tagId = ['scheduleId', 'patientName', 'email', 'phone', 'birthdate', 'condition', 'reason', 'date', 'status', ]
 		console.log(details);
-		for (var i = 0; i < details.length; i++) {
-			$(tagId[i]).html(details[i]);
+		for(var i=0; i < details.length; i++){
+			$("#"+tagId[i]).html(details[i]);
 		}
 		$('#modalScheduleDetails').modal('show');
 	}
