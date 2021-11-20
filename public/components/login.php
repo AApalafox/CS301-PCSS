@@ -53,14 +53,12 @@
 				'password': record[1]
 			},
 			success: function(response) {
-
 				response = JSON.parse(response);
 				if (response.code != 400) {
-					for (let row of response){
-						Cookies.set('id', row.patient_id);
-						break;
-					}
-					Cookies.set('type', "patient");
+					
+					Cookies.set('id', response[0].patient_id, {path: ''});
+					Cookies.set('name', response[0].name, {path: ''});
+					Cookies.set('type', "patient", {path: ''});
 					window.location.reload();
 				} else {
 					console.log(response.code);
