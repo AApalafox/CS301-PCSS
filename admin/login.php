@@ -18,7 +18,8 @@ if (isset($_POST["login"])) {
 		foreach ($result as $row) {
 			if ($_POST['password'] == $row['password']) {
 				setcookie("id", $row["consultant_id"], time() + 3600);
-				setcookie("name", $row["fname"] . " " . $row["lname"]);
+				setcookie("name", $row["fname"] . " " . $row["lname"], time() + 3600);
+				setcookie("type", "consultant", time() + 3600);
 				header("location:dashboard.php");
 			} else {
 				$message = '<div class="alert alert-danger">Invalid Email or Password</div>';
