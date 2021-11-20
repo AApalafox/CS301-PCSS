@@ -30,7 +30,8 @@ $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
 		<hr>
 
 		<!-- side nav -->
-		<div class="container">
+		<!-- please add id here if any new page will be made-->
+		<div class="container" id="pageUsers">
 			<?php include 'templates/side-nav.php'; ?>
 		</div>
 
