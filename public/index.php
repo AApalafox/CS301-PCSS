@@ -25,7 +25,7 @@
 		<?php include 'components/schedule.php'; ?>
 	</div>
 
-	<div class="content-container component">
+	<div class="content-container component" id="services">
 		<div class="text-center mb-2 ">
 				<h2>Our Services</h2>
 		</div>
