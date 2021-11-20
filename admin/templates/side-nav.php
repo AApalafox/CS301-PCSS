@@ -8,13 +8,11 @@
 </div>
 
 <!-- Use any element to open the sidenav -->
-
-<button onclick="openNav()" id="btnMenu" class="btn btnSquare" style="display: none;"><i class="fas fa-bars fa-1x"></i></i></button>
-
+<button onclick="openNav()" id="btnMenu" class="btn btnSquare my-3" style="display: none;"><i class="fas fa-bars fa-1x"></i></button>
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-<div id="main">
+<!-- <div id="main">
 
-</div>
+</div> -->
 
 <script>
 	//adds ID for all sideNav options
@@ -41,7 +39,7 @@
 		// document.getElementById("main").style.marginLeft = "250px";
 		var x = document.getElementById("btnMenu");
 		if (x.style.display === "none") {
-			x.style.display = "block";
+			x.style.display = "inline";
 		} else {
 			x.style.display = "none";
 		}
@@ -54,7 +52,7 @@
 		// document.getElementById("main").style.marginLeft = "0";
 		var x = document.getElementById("btnMenu");
 		if (x.style.display === "none") {
-			x.style.display = "block";
+			x.style.display = "inline";
 		} else {
 			x.style.display = "none";
 		}
