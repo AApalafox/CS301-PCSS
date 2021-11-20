@@ -35,7 +35,7 @@
         <li class="nav-item"><a class="nav-link" href="#doctors"> Doctors </a></li>
         <li class="nav-item"><a class="nav-link" href="#department"> Departments </a></li>
         <li class="nav-item"><a class="nav-link" href="#contact"> Contact </a></li>
-        <li class="nav-item dropdown" id="accountLogout">
+        <li class="nav-item dropdown mt-2" id="accountLogout">
           <div class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Account
             <i class="fas fa-user text-light"></i>
