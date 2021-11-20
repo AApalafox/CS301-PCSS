@@ -50,7 +50,7 @@ mysqli_close($conn);
 
 
 		<!-- page content -->
-		<div class="ui container">
+		<div class="ui">
 			<div class="ui grid">
 				<div class="ui sixteen column">
 					<div id="calendar"></div>

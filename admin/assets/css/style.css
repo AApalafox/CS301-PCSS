@@ -83,6 +83,9 @@ a.nav-link {
 /* .main-container {
 	margin-left: 18%;
 } */
+.container {
+	overflow: auto;
+}
 
 .component {
 	margin-bottom: 40px;
