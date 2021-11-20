@@ -10,6 +10,8 @@
 	<title>PCSS Register</title>
 	<?php include '../assets/links.php' ?>
 	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+	<link href="../assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<script src="../assets/js/bootstrap-datetimepicker.min.js"></script>
 </head>
 
 <body>
