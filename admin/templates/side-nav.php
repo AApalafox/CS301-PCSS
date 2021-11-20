@@ -21,18 +21,18 @@
 	//this should be update if ever new page is added here
 	const pageNames = ["Dashboard", "Consultations", "Hospital", "Notifications", "Users"]
 	// nasira ulet sorry haha
-	// for(let i = 0; i < pageNames.length; i++){
-	// 	//this x is for convenience only
-	// 	let x = $(".sidebar a:eq("+(i+1)+")");
+	for(let i = 0; i < pageNames.length; i++){
+		//this x is for convenience only
+		let x = $(".sidebar a:eq("+(i+1)+")");
 
-	// 	//here adds ID on the sideNav options
-	// 	x.attr('id', "sidebar"+pageNames[i]);
+		//here adds ID on the sideNav options
+		x.attr('id', "sidebar"+pageNames[i]);
 
-	// 	//adds highlighter depending on the current page
-	// 	if($("#mySidenav").parent().attr('id').substring(4)==pageNames[i]){
-	// 		x.attr('class', "bg-light");
-	// 	}
-	// }
+		//adds highlighter depending on the current page
+		if($("#mySidenav").parent().attr('id').substring(4)==pageNames[i]){
+			x.attr('class', "currentPage");
+		}
+	}
 
 
 	// /* Set the width of the side navigation to 250px */
