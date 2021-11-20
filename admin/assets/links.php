@@ -29,5 +29,5 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css?family=Merriweather|Muli:300" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Neuton|Work+Sans" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="assets/css/sidenav.css">
+<!-- <link rel="stylesheet" type="text/css" href="assets/css/sidenav.css"> -->
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">

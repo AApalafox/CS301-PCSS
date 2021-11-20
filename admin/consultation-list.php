@@ -14,8 +14,8 @@ $result1 = $conn->query($sql);
 if ($result1->num_rows > 0) {
 	$result1 = ($result1->fetch_all(MYSQLI_ASSOC));
 }
-if(isset($_COOKIE["type"]))
-	if($_COOKIE["type"]=="patient")
+if (isset($_COOKIE["type"]))
+	if ($_COOKIE["type"] == "patient")
 		header("location:logout.php");
 
 if (!isset($_COOKIE["id"])) {
@@ -56,15 +56,17 @@ if (isset($_GET['q'])) {
 </head>
 
 <body>
-	<div class="main-container" id="mainContainer">
+
+	<div class="" id="pageConsultations">
+		<?php include 'templates/side-nav.php'; ?>
+	</div>
+	<div class="content" id="mainContainer">
 		<?php include 'templates/header.php'; ?>
 		<hr>
 
 		<!-- side nav -->
 		<!-- please add id here if any new page will be made-->
-		<div class="container" id="pageConsultations">
-			<?php include 'templates/side-nav.php'; ?>
-		</div>
+
 
 		<!-- page content -->
 		<div class="container">
@@ -96,14 +98,14 @@ if (isset($_GET['q'])) {
 							} else if ($ajaxVar[$i] == "view") {
 								echo '
 								<td>
-								<button class="chg btn fas fa-eye px-3 bg-dark" onclick="viewSchedule(this.value)" href="#" value="', 
-									$row["id"], '/', 
-									$row["name"],'/',
-									$row["birthdate"], '/', 
-									$row["condition"], '/', 
-									$row["reason"],'/', 
-									$row["schedule_dateTime"], '/', 
-									$row["status"], '">
+								<button class="chg btn fas fa-eye px-3 bg-dark" onclick="viewSchedule(this.value)" href="#" value="',
+								$row["id"], '/',
+								$row["name"], '/',
+								$row["birthdate"], '/',
+								$row["condition"], '/',
+								$row["reason"], '/',
+								$row["schedule_dateTime"], '/',
+								$row["status"], '">
 								</button>
 								<button class="del btn fas fa-trash-alt bg-danger" href="#" value="', $row[$ajaxVar[0]], '"></button>
 								';
@@ -147,7 +149,7 @@ if (isset($_GET['q'])) {
 	$(".dateUpd").click(function() {
 		$(this).hide();
 		dateId = $(this).val();
-		
+
 		scheduleAdjust(dateTime, dateId);
 	});
 	//date jQueries
@@ -181,7 +183,7 @@ if (isset($_GET['q'])) {
 		$('#myTable').dataTable();
 	});
 
-	
+
 
 	query_Id = '<?php echo $query_Id ?>';
 	if (query_Id != 'empty') {
@@ -242,8 +244,8 @@ if (isset($_GET['q'])) {
 		//schedule id, name, birthdate, condition, reason, date, status
 		tagId = ['scheduleId', 'patientName', 'birthdate', 'condition', 'reason', 'date', 'status', ]
 		console.log(details);
-		for(var i=0; i < details.length; i++){
-			$("#"+tagId[i]).html(details[i]);
+		for (var i = 0; i < details.length; i++) {
+			$("#" + tagId[i]).html(details[i]);
 		}
 		$('#modalScheduleDetails').modal('show');
 	}

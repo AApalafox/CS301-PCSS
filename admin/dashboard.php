@@ -1,6 +1,6 @@
 <?php
-if(isset($_COOKIE["type"]))
-	if($_COOKIE["type"]=="patient")
+if (isset($_COOKIE["type"]))
+	if ($_COOKIE["type"] == "patient")
 		header("location:logout.php");
 
 if (!isset($_COOKIE["id"])) {
@@ -38,15 +38,16 @@ mysqli_close($conn);
 </head>
 
 <body>
-	<div class="main-container" id="mainContainer">
+	<div id="pageDashboard">
+		<?php include 'templates/side-nav.php'; ?>
+	</div>
+	<div class="content">
 		<?php include 'templates/header.php'; ?>
 		<hr>
 
 		<!-- side nav -->
 		<!-- please add id here if any new page will be made-->
-		<div class="container" id="pageDashboard">
-			<?php include 'templates/side-nav.php'; ?>
-		</div>
+
 
 		<!-- page content -->
 		<div class="ui container">
@@ -70,10 +71,10 @@ mysqli_close($conn);
 	// console.log(today);
 
 	var schedules = <?php echo json_encode($phpschedules) ?>;
-	for(var i = 0; i < schedules.length; i++){
+	for (var i = 0; i < schedules.length; i++) {
 		q = schedules[i].title;
 		console.log(q);
-		schedules[i].url = "consultation-list.php?q="+q;
+		schedules[i].url = "consultation-list.php?q=" + q;
 	}
 	console.log(schedules);
 

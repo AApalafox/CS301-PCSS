@@ -2,14 +2,15 @@
 <html lang="en">
 <?php
 
-if(isset($_COOKIE["type"]))
-	if($_COOKIE["type"]=="patient")
+if (isset($_COOKIE["type"]))
+	if ($_COOKIE["type"] == "patient")
 		header("location:logout.php");
 
 if (!isset($_COOKIE["id"])) {
 	header("location:index.php");
 }
 ?>
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,15 +35,16 @@ if (!isset($_COOKIE["id"])) {
 </head>
 
 <body>
-	<div class="main-container" id="mainContainer">
+	<div class="" id="pageHospital">
+		<?php include 'templates/side-nav.php'; ?>
+	</div>
+	<div class="content" id="mainContainer">
 		<?php include 'templates/header.php'; ?>
 		<hr>
 
 		<!-- side nav -->
 		<!-- please add id here if any new page will be made-->
-		<div class="container" id="pageHospital">
-			<?php include 'templates/side-nav.php'; ?>
-		</div>
+
 
 		<!-- page content -->
 		<div class="container">
