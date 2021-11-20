@@ -45,10 +45,6 @@ mysqli_close($conn);
 		<?php include 'templates/header.php'; ?>
 		<hr>
 
-		<!-- side nav -->
-		<!-- please add id here if any new page will be made-->
-
-
 		<!-- page content -->
 		<div class="ui">
 			<div class="ui grid">

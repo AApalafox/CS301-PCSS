@@ -28,11 +28,7 @@ if (!isset($_COOKIE["id"])) {
 	<div class="content" id="mainContainer">
 		<?php include 'templates/header.php'; ?>
 		<hr>
-
-		<!-- side nav -->
-		<!-- please add id here if any new page will be made-->
-
-
+		
 		<!-- page content -->
 		<div class="container">
 			<label class="caption-body">Consultation Notification</label>
