@@ -28,11 +28,11 @@
 						</div>
 						<div class="col">
 							<label class="form-label">Email</label>
-							<input type="text" class="form-control" placeholder="example@gmail.com" id="addUserEmail" value="" required>
+							<input type="email" class="form-control" placeholder="example@gmail.com" id="addUserEmail" value="" required>
 						</div>
 						<div class="col">
 							<label class="form-label">Password</label>
-							<input type="text" class="form-control" placeholder="Password" id="addUserPassword" value="" required>
+							<input type="password" class="form-control" placeholder="Password" id="addUserPassword" value="" required>
 						</div>
 						<div class="">
 							<label class="form-label">Job</label>
