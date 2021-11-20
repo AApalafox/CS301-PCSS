@@ -24,6 +24,12 @@
 }
 
 /* When you mouse over the navigation links, change their color */
+
+.sidenav a.bg-light:hover{
+  color: black;
+  text-shadow:3px 3px 5px gray;
+}
+
 .sidenav a:hover {
   color: #f1f1f1;
 }
