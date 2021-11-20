@@ -39,7 +39,8 @@ mysqli_close($conn);
 		<hr>
 
 		<!-- side nav -->
-		<div class="container">
+		<!-- please add id here if any new page will be made-->
+		<div class="container" id="pageDashboard">
 			<?php include 'templates/side-nav.php'; ?>
 		</div>
 
