@@ -45,11 +45,11 @@
 		</div>
 		<?php include 'components/departments-accordion.php'; ?>
 	</div>
-
+	<!--
 	<div class="wide-container component">
-		<?php include 'components/testimonies-carousel.php' ?>
+		<?php //include 'components/testimonies-carousel.php' ?>
 	</div>
-
+	-->
 	<div class="container" id="contact">
 		<?php include 'components/schedule.php'; ?>
 	</div>
