@@ -58,7 +58,8 @@ if (isset($_GET['q'])) {
 		<hr>
 
 		<!-- side nav -->
-		<div class="container">
+		<!-- please add id here if any new page will be made-->
+		<div class="container" id="pageConsultations">
 			<?php include 'templates/side-nav.php'; ?>
 		</div>
 
