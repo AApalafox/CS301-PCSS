@@ -44,7 +44,7 @@
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item" href="../admin/index.php">Admin</a></li>
             <li><a class="dropdown-item" href="#">Medical Records</a></li>
-            <li><a class="dropdown-item" href="config/logout.php">Logout</a></li>
+            
           </ul>
         </li>
       </ul>
@@ -59,11 +59,9 @@
 </nav>
 
 <script>
-  // if (Cookies.get("type")) {
-  //   $('#accountLogout').css("visibility", "visible");
-  // } else {
-  //   $('#accountLogout').css("visibility", "hidden");
-  // }
+  if(Cookies.get("type")){
+    $("#accountOptions").append('<li><a class="dropdown-item" href="config/logout.php">Logout</a></li>');
+  }
   $("#scheduleBtn").click(function() {
     if (!(Cookies.get("type"))) {
       $('#loginModal').modal('show');
