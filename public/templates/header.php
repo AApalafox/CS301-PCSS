@@ -33,9 +33,9 @@
         <li class="nav-item"><a class="nav-link active" href="#"> Home </a></li>
         <li class="nav-item"><a class="nav-link" href="#"> About Us </a></li>
         <li class="nav-item"><a class="nav-link" href="#"> Services </a></li>
-        <li class="nav-item"><a class="nav-link" href="#"> Doctors </a></li>
-        <li class="nav-item"><a class="nav-link" href="#"> Departments </a></li>
-        <li class="nav-item"><a class="nav-link" href="#"> Contact </a></li>
+        <li class="nav-item"><a class="nav-link" href="#doctors"> Doctors </a></li>
+        <li class="nav-item"><a class="nav-link" href="#department"> Departments </a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact"> Contact </a></li>
       </ul>
 
     </div> <!-- navbar-collapse.// -->
