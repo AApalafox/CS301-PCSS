@@ -1,8 +1,12 @@
+<?php
+	$conditions = ["High Blood Pressure", "Heart Disease", "High Cholesterol", "Diabetes", "Bleeding Disorder"];
+	$ajaxVar = ["condition","reason","form_dateTime","patient_id"];	
+?>
 <!-- Modal -->
 <div class="modal fade in" id="addScheduleModal" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
 		<div class="modal-content">
-			<form action="index.php" method="POST" class="need-validation">
+			<form id="formRequest" method="POST">
 				<div class="modal-header">
 					<!-- <h5 class="modal-title" id="exampleModalLabel">User Details</h5> -->
 					<p class="modal-title brand m-0 mt-2">
@@ -14,36 +18,21 @@
 					<div class="col">
 						<div class="container">
 							<label class="form-label caption-body">Have you seen a doctor for any of the following illness?</label>
-							<div class="form-check">
-								<input class="form-input" type="checkbox" value="" id="highBloodPressure">
-								<label class="form-label" for="highBloodPressure">
-									High Blood Pressure
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-input" type="checkbox" value="" id="heartDisease">
-								<label class="form-label" for="heartDisease">
-									Heart Disease
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-input" type="checkbox" value="" id="highCholesterol">
-								<label class="form-label" for="highCholesterol">
-									High Cholesterol
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-input" type="checkbox" value="" id="diabetes">
-								<label class="form-label" for="diabetes">
-									Diabetes
-								</label>
-							</div>
-							<div class="form-check mb-3">
-								<input class="form-input" type="checkbox" value="" id="bleedingDisorder">
-								<label class="form-label" for="bleedingDisorder">
-									Bleeding Disorder
-								</label>
-							</div>
+							
+							<?php
+								//php foreach loop
+								//to print all of the checkboxes
+								foreach($conditions as $name){
+							?>
+								<div class="form-check">
+									<input class="form-input" type="checkbox" value="<?=$name?>" id="<?=$name?>">
+									<label class="form-label" for="<?=$name?>"><?=$name?></label>
+								</div>
+							<?php	
+								}
+							?>
+
+							<!-- maybe delete below -->
 							<label class="form-label caption-body">Have you ever undergone surgery?</label>
 							<div class="form-check">
 								<input type="radio" class="form-check-input" id="surgery-yes" name="surgery-radio" required>
@@ -54,25 +43,24 @@
 								<label class="form-check-label" for="surgery-no">No</label>
 								<div class="invalid-feedback">Please select either Yes or No</div>
 							</div>
+							<!-- maybe delete above -->
+							
 						</div>
 					</div>
 					<div class="col">
 						<div class="mb-3">
 							<label class="form-label caption-body">Specific Reason for Consultation</label>
-							<textarea class="form-control" id="reason" placeholder="Required reason" required></textarea>
-							<div class="invalid-feedback">
-								Please enter your reason for consultation
-							</div>
+							<textarea class="form-control" id="formReason" placeholder="Required reason" required></textarea>
 						</div>
 						<label class="form-label caption-body">Consultation Date and Time</label>
 						<div class="">
-							<input type="text" class="form-control isInvalid" id="datetime2" readonly required>
+							<input type="text" class="form-control isInvalid" id="formDateTime" readonly required>
 						</div>
 					</div>
 				</div><!-- end of modal body -->
 				<div class="modal-footer">
 					<div class="text-end">
-						<button type="submit" class="btn" name="submitSchedule">
+						<button type="submit" class="btn" name="formSubmit" id="formSubmit">
 							<!-- <i class="fas fa-user-plus m-1 text-light"></i> -->
 							Submit Consultation
 						</button>
@@ -84,10 +72,9 @@
 </div><!-- end of modal -->
 
 <script>
-	$("#datetime2").datetimepicker({
-		format: 'yyyy-mm-dd hh:ii',
-		autoclose: true
-	});
+	/*
+	imma delete this function on next update because this is for form with attribute "novalidate",
+	its irrelevant here since we dont use that
 	(function() {
 		'use strict'
 
@@ -106,10 +93,15 @@
 				}, false)
 			})
 	})()
+	*/
+	$("#formDateTime").datetimepicker({
+		format: 'yyyy-mm-dd hh:ii',
+		autoclose: true
+	});
 	
 	//TO CHECK IF A CHECKBOX IS ACTIVE
 	var conditions = [];
-	<?php for($i = 0; $i < 5; $i++){?>
+	<?php for($i = 0; $i < count($conditions); $i++){?>
 		$('.form-check:eq(<?=$i?>)').find('input').click(function(){
 			if($(this).is(':checked')){
 				conditions.push($(this).val());
@@ -119,19 +111,49 @@
 			}
 		});
 	<?php };?>
-	$('#submitSchedule').hover(function(){
-		output = [""];
+	
+	//onsubmit function
+	$('#formRequest').bind('submit',function(){
+		record = [""];
 		if(conditions.length>0){
 			for(let x in conditions){
-				output[0] += conditions[x]+", ";
+				record[0] += conditions[x]+", ";
 			}
-			output[0] = output[0].substring(0, output[0].length-2);
-		}
-		output.push($('.form-control:eq(0)').val());
-		output.push($('.form-control:eq(1)').val().substring(0,10));
-		output.push($('.form-control:eq(1)').val().substring(11));
-
-		console.log(output);
-
+			record[0] = record[0].substring(0, record[0].length-2);
+		}//condition
+		record.push($('.form-control:eq(0)').val());//reason
+		record.push($('.form-control:eq(1)').val()+":00");//dateTime
+		record.push(Cookies.get('id'));//patient_id
+		insertForm(record);
+		return false;
 	});
+	
+	//INSERT
+	function insertForm(record){
+		$.ajax({
+			'url':"config/endpoints/formSubmit.php",
+			'type':"POST",
+			'data':{
+				<?php 
+					for($i = 0; $i <count($ajaxVar); $i++)
+						echo '',$ajaxVar[$i],':record[',$i,'],';
+				?>
+			},
+			success: function(response){
+				response = JSON.parse(response);
+				if(response.code == 200){
+					console.log(response.code);
+					alert("Successfully submitted a schedule.");
+					window.location.reload();
+				}
+				else if (response.code == 400){
+					console.log(response.error);
+
+				}
+				else{
+					console.log(response.code);
+				}
+			}
+		});
+	}
 </script>
