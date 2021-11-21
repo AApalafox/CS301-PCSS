@@ -15,6 +15,8 @@
 
 	<?php include 'components/schedule-consultation-modal.php'; ?>
 	
+	<?php include 'components/medical-records.php'; ?>
+	
 	<?php include 'components/login.php'; ?>
 	
 	<div class="position-relative component">
