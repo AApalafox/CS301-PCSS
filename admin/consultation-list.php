@@ -48,7 +48,7 @@ if (isset($_GET['q'])) {
 		}
 
 		input.status {
-			max-width: 80px;
+			max-width: 85px;
 			display: inline;
 		}
 	</style>
