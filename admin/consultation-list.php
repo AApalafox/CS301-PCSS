@@ -51,6 +51,13 @@ if (isset($_GET['q'])) {
 			max-width: 85px;
 			display: inline;
 		}
+		input.options {
+			max-width: 85px;
+			max-height: 21px;
+		}
+		#consultationTable{
+			overflow:visible;
+		}
 	</style>
 
 </head>
@@ -65,7 +72,7 @@ if (isset($_GET['q'])) {
 		<hr>
 
 		<!-- page content -->
-		<div class="container">
+		<div class="container" id="consultationTable">
 			<label class="caption-body">Consultation List</label>
 			<table class="table table-hover align-middle" id="myTable">
 				<thead>
@@ -91,9 +98,21 @@ if (isset($_GET['q'])) {
 							<div class="navbar" style="display:inline">
 								<input type="text" class="status dropdown-toggle form-control bg-light"readonly data-bs-toggle="dropdown" value="', $row[$ajaxVar[$i]], '" dummy="', $row[$ajaxVar[$i]], '">
 								<ul class="dropdown-menu">
-									<li><a class="statusChg dropdown-item" value="', $row[$ajaxVar[0]], '">Success</a></li>
-									<li><a class="statusChg dropdown-item" value="', $row[$ajaxVar[0]], '">Pending</a></li>
-									<li><a class="statusChg dropdown-item" value="', $row[$ajaxVar[0]], '">Cancelled</a></li>
+									<li>
+										<a class="statusChg dropdown-item" dummy="Success">
+											<input class="options form-control-plaintext" disabled placeholder="Success">
+										</a>
+									</li>
+									<li>
+										<a class="statusChg dropdown-item" dummy="Pending">
+											<input class="options form-control-plaintext" disabled placeholder="Pending">
+										</a>
+									</li>
+									<li>
+										<a class="statusChg dropdown-item" dummy="Cancelled">
+											<input class="options form-control-plaintext" disabled placeholder="Cancelled">
+										</a>
+									</li>
 								</ul>
 							</div>
 							<button class="statusUpd btn fas fa-check-square bg-success" href="#" value="', $row[$ajaxVar[0]], '"style="display:none"></button>
@@ -164,14 +183,14 @@ if (isset($_GET['q'])) {
 		current = $(this).parent().parent().parent();
 		//goes to the <input>, top of it that <a> selected
 
-		if (current.find('input').attr("dummy") == $(this).text()) {
+		if (current.find('input').attr("dummy") == $(this).attr("dummy")) {
 			current.parent().find('button.statusUpd').hide();
 		} else {
-			schedStat = $(this).text();
+			schedStat = $(this).attr("dummy");
 			current.parent().find('button.statusUpd').show();
 			//goes to the <td> of that row, and activates the confirm button
 		}
-		current.find('input').attr("value", $(this).text());
+		current.find('input').attr("value", $(this).attr("dummy"));
 	});
 	$("button.statusUpd").click(function() {
 		schedId = $(this).val();
@@ -183,9 +202,7 @@ if (isset($_GET['q'])) {
 	$(document).ready(function() {
 		$('#myTable').dataTable();
 	});
-
-
-
+	
 	query_Id = '<?php echo $query_Id ?>';
 	if (query_Id != 'empty') {
 		$('#myTable').dataTable({
