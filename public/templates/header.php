@@ -43,7 +43,6 @@
           </div>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="accountOptions">
             <li><a class="dropdown-item" href="../admin/index.php">Admin</a></li>
-            <li><a class="dropdown-item" href="#">Medical Records</a></li>
             
           </ul>
         </li>
