@@ -1,27 +1,27 @@
 <?php
 include("config/endpoints/db.php");
 
+if(isset($_SERVER['HTTP_COOKIE'])){
+	//for reading the cookies
+	parse_str(strtr($_SERVER['HTTP_COOKIE'], array('&' => '%26', '+' => '%2B', ';' => '&')), $cookies);
+	$sql = "
+		SELECT 
+			form_id AS id, 
+			DATE_FORMAT(form_dateTime, '%M. %d, %Y - %h:%i %p') AS 'date',
+			form_dateTime, 
+			status,
+			`condition`,
+			reason
+		FROM form
+		WHERE patient_id LIKE ". $cookies['id'] .";
+	";
+	$result = $conn->query($sql);
 
-//for reading the cookies
-parse_str(strtr($_SERVER['HTTP_COOKIE'], array('&' => '%26', '+' => '%2B', ';' => '&')), $cookies);
-$sql = "
-	SELECT 
-		form_id AS id, 
-		DATE_FORMAT(form_dateTime, '%M. %d, %Y - %h:%i %p') AS 'date',
-		form_dateTime, 
-		status,
-		`condition`,
-		reason
-	FROM form
-	WHERE patient_id LIKE ". $cookies['id'] .";
-";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-	$result = ($result->fetch_all(MYSQLI_ASSOC));
+	if ($result->num_rows > 0) {
+		$result = ($result->fetch_all(MYSQLI_ASSOC));
+	}
+	mysqli_close($conn);
 }
-mysqli_close($conn);
-
 $ajaxVar = ["id", "date", "status", "view"];
 $placeholder = ["ID", "Date", "Status", "View"];
 
