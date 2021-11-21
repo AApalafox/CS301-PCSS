@@ -1,6 +1,6 @@
 <?php
-	$conditions = ["High Blood Pressure", "Heart Disease", "High Cholesterol", "Diabetes", "Bleeding Disorder"];
-	$ajaxVar = ["condition","reason","form_dateTime","patient_id"];	
+$conditions = ["High Blood Pressure", "Heart Disease", "High Cholesterol", "Diabetes", "Bleeding Disorder"];
+$ajaxVar = ["condition", "reason", "form_dateTime", "patient_id"];
 ?>
 <!-- Modal -->
 <div class="modal fade in" id="addScheduleModal" tabindex="-1" aria-hidden="true">
@@ -14,25 +14,26 @@
 					</p>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div><!-- end of modal header -->
-				<div class="g-3 modal-body p-4 row container">
-					<div class="col">
-						<div class="container">
-							<label class="form-label caption-body">Have you seen a doctor for any of the following illness?</label>
-							
-							<?php
+				<div class="container">
+					<div class="g-3 modal-body p-4 row">
+						<div class="col">
+							<div class="container">
+								<label class="form-label caption-body">Have you seen a doctor for any of the following illness?</label>
+
+								<?php
 								//php foreach loop
 								//to print all of the checkboxes
-								foreach($conditions as $name){
-							?>
-								<div class="form-check">
-									<input class="form-input" type="checkbox" value="<?=$name?>" id="<?=$name?>">
-									<label class="form-label" for="<?=$name?>"><?=$name?></label>
-								</div>
-							<?php	
+								foreach ($conditions as $name) {
+								?>
+									<div class="form-check">
+										<input class="form-input" type="checkbox" value="<?= $name ?>" id="<?= $name ?>">
+										<label class="form-label" for="<?= $name ?>"><?= $name ?></label>
+									</div>
+								<?php
 								}
-							?>
+								?>
 
-							<!-- maybe delete this 
+								<!-- maybe delete this 
 							<label class="form-label caption-body">Have you ever undergone surgery?</label>
 							<div class="form-check">
 								<input type="radio" class="form-check-input" id="surgery-yes" name="surgery-radio" required>
@@ -44,20 +45,21 @@
 								<div class="invalid-feedback">Please select either Yes or No</div>
 							</div>
 							maybe delete this -->
-							
+
+							</div>
 						</div>
-					</div>
-					<div class="col">
-						<div class="mb-3">
-							<label class="form-label caption-body">Specific Reason for Consultation</label>
-							<textarea class="form-control" id="formReason" placeholder="Required reason" required></textarea>
+						<div class="col">
+							<div class="mb-3">
+								<label class="form-label caption-body">Specific Reason for Consultation</label>
+								<textarea class="form-control" id="formReason" placeholder="Required reason" required></textarea>
+							</div>
+							<label class="form-label caption-body">Consultation Date and Time</label>
+							<div class="">
+								<input type="text" class="form-control isInvalid" id="formDateTime" readonly required>
+							</div>
 						</div>
-						<label class="form-label caption-body">Consultation Date and Time</label>
-						<div class="">
-							<input type="text" class="form-control isInvalid" id="formDateTime" readonly required>
-						</div>
-					</div>
-				</div><!-- end of modal body -->
+					</div><!-- end of modal body -->
+				</div>
 				<div class="modal-footer">
 					<div class="text-end">
 						<button type="submit" class="btn" name="formSubmit" id="formSubmit">
@@ -98,59 +100,56 @@
 		format: 'yyyy-mm-dd hh:ii',
 		autoclose: true
 	});
-	
+
 	//TO CHECK IF A CHECKBOX IS ACTIVE
 	var conditions = [];
-	<?php for($i = 0; $i < count($conditions); $i++){?>
-		$('.form-check:eq(<?=$i?>)').find('input').click(function(){
-			if($(this).is(':checked')){
+	<?php for ($i = 0; $i < count($conditions); $i++) { ?>
+		$('.form-check:eq(<?= $i ?>)').find('input').click(function() {
+			if ($(this).is(':checked')) {
 				conditions.push($(this).val());
-			}
-			else{
+			} else {
 				conditions.splice(conditions.indexOf($(this).val()), 1);
 			}
 		});
-	<?php };?>
-	
+	<?php }; ?>
+
 	//onsubmit function
-	$('#formRequest').bind('submit',function(){
+	$('#formRequest').bind('submit', function() {
 		record = [""];
-		if(conditions.length>0){
-			for(let x in conditions){
-				record[0] += conditions[x]+", ";
+		if (conditions.length > 0) {
+			for (let x in conditions) {
+				record[0] += conditions[x] + ", ";
 			}
-			record[0] = record[0].substring(0, record[0].length-2);
-		}//condition
-		record.push($('.form-control:eq(0)').val());//reason
-		record.push($('.form-control:eq(1)').val()+":00");//dateTime
-		record.push(Cookies.get('id'));//patient_id
+			record[0] = record[0].substring(0, record[0].length - 2);
+		} //condition
+		record.push($('.form-control:eq(0)').val()); //reason
+		record.push($('.form-control:eq(1)').val() + ":00"); //dateTime
+		record.push(Cookies.get('id')); //patient_id
 		insertForm(record);
 		return false;
 	});
-	
+
 	//INSERT
-	function insertForm(record){
+	function insertForm(record) {
 		$.ajax({
-			'url':"config/endpoints/formSubmit.php",
-			'type':"POST",
-			'data':{
-				<?php 
-					for($i = 0; $i <count($ajaxVar); $i++)
-						echo '',$ajaxVar[$i],':record[',$i,'],';
+			'url': "config/endpoints/formSubmit.php",
+			'type': "POST",
+			'data': {
+				<?php
+				for ($i = 0; $i < count($ajaxVar); $i++)
+					echo '', $ajaxVar[$i], ':record[', $i, '],';
 				?>
 			},
-			success: function(response){
+			success: function(response) {
 				response = JSON.parse(response);
-				if(response.code == 200){
+				if (response.code == 200) {
 					console.log(response.code);
 					alert("Successfully submitted a schedule.");
 					window.location.reload();
-				}
-				else if (response.code == 400){
+				} else if (response.code == 400) {
 					console.log(response.error);
 
-				}
-				else{
+				} else {
 					console.log(response.code);
 				}
 			}
