@@ -190,7 +190,7 @@ if (isset($_GET['q'])) {
 			current.parent().find('button.statusUpd').show();
 			//goes to the <td> of that row, and activates the confirm button
 		}
-		current.find('input').attr("value", $(this).attr("dummy"));
+		current.find('input.status').attr("value", $(this).attr("dummy"));
 	});
 	$("button.statusUpd").click(function() {
 		schedId = $(this).val();
