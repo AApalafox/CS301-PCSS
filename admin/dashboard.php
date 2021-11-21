@@ -84,9 +84,9 @@ mysqli_close($conn);
 			},
 			defaultDate: today,
 			navLinks: true, // can click day/week names to navigate views
-			editable: true,
 			eventLimit: true, // allow "more" link when too many events
-			events: schedules
+			events: schedules,
+			eventBackgroundColor: 'rgba(123,202,255,0.1)'
 		});
 
 	});
