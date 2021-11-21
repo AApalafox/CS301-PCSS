@@ -17,6 +17,11 @@ $result = $conn->query($sql);
 
 $ajaxVar = ["consultant_id", "fname", "lname", "email", "password", "job"];
 $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
+
+$query_Id = 'empty';
+if (isset($_GET['q'])) {
+	$query_Id = $_GET['q'];
+}
 ?>
 
 <head>
@@ -90,6 +95,15 @@ $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
 	$(document).ready(function() {
 		$('#myTable').dataTable();
 	});
+
+	query_Id = <?php echo $query_Id ?>;
+	if (query_Id != 'empty') {
+		$('#myTable').dataTable({
+			"search": {
+				"search": query_Id
+			}
+		});
+	}
 
 	//delete function per Table Row
 	$('.del').click(function() {

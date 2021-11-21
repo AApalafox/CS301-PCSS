@@ -18,7 +18,7 @@
         <p class="text-capitalize d-inline text-light"><?php echo $_COOKIE["name"]; ?></p>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="user-list.php">Account</a></li>
+        <li><a class="dropdown-item" href="user-list.php?q='<?php echo $_COOKIE["name"] ?>'">Account</a></li>
         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
       </ul>
     </div>
