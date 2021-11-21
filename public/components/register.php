@@ -105,7 +105,7 @@
 				response = JSON.parse(response);
 				if(response.code == 200){
 					console.log(response.code);
-					alert("Successfully submitted a schedule.");
+					alert("Successfully created account!");
 					window.location.replace("../index.php");
 				}
 				else if (response.code == 400){
