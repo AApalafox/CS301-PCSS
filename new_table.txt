@@ -1,5 +1,0 @@
-CREATE TABLE `pcss`.`hospital_schedule` ( `field_name` VARCHAR(250) NOT NULL , `value` VARCHAR(250) NOT NULL , `date_created` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ) ENGINE = InnoDB;
-
-INSERT INTO `hospital_schedule` (`field_name`, `value`, `date_created`) VALUES ('days', 'monday,tuesday,wednesday,thursday,friday,saturday', current_timestamp())
-
-INSERT INTO `hospital_schedule` (`field_name`, `value`, `date_created`) VALUES ('time', '8:00 - 21:00', current_timestamp())
