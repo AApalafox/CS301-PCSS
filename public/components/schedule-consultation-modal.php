@@ -10,7 +10,7 @@ $ajaxVar = ["condition", "reason", "form_dateTime", "patient_id"];
 				<div class="modal-header">
 					<!-- <h5 class="modal-title" id="exampleModalLabel">User Details</h5> -->
 					<p class="modal-title brand m-0 mt-2">
-						<i class="fas fa-info-circle m-1 fa-1x"></i></i>Consultation Details
+						<i class="fas fa-info-circle m-1 fa-1x text-dark"></i></i>Consultation Details
 					</p>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div><!-- end of modal header -->
