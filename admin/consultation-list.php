@@ -78,9 +78,9 @@ if (isset($_GET['q'])) {
 				</thead>
 				<tbody>
 					<?php
+					echo '<br>';
 
 					foreach ($result1 as $row) {
-						echo '<br>';
 
 						echo '<tr>';
 						for ($i = 0; $i < count($ajaxVar); $i++) {
@@ -160,14 +160,13 @@ if (isset($_GET['q'])) {
 
 	//status jQueries
 	var schedStat, schedId;
-	$("a.statusChg").click(function(){
+	$("a.statusChg").click(function() {
 		current = $(this).parent().parent().parent();
 		//goes to the <input>, top of it that <a> selected
-		
-		if(current.find('input').attr("dummy") == $(this).text()){
+
+		if (current.find('input').attr("dummy") == $(this).text()) {
 			current.parent().find('button.statusUpd').hide();
-		}
-		else{
+		} else {
 			schedStat = $(this).text();
 			current.parent().find('button.statusUpd').show();
 			//goes to the <td> of that row, and activates the confirm button
