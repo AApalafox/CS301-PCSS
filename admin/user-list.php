@@ -149,6 +149,7 @@ $placeholder = ["ID", "First Name", "Last Name", "email", "password", "job"];
 				response = JSON.parse(response);
 				if (response.code == 200) {
 					console.log(response.code);
+					alert("User successfully deleted!");
 				} else if (response.code == 400) {
 					console.log(response.error);
 

@@ -85,7 +85,7 @@
 				response = JSON.parse(response);
 				if(response.code == 200){
 					console.log(response.code);
-					alert("Successfully added a user!.");
+					alert("Successfully added a user!");
 					window.location.reload();
 				}
 				else if (response.code == 400){
