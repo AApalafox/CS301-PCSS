@@ -61,7 +61,11 @@
 <script>
   if(Cookies.get("type")){
     $("#accountOptions").append('<li><a class="dropdown-item" href="config/logout.php">Logout</a></li>');
+    $("#accountOptions").append('<li><a class="dropdown-item" id="record" href="#">Medical Records</a></li>');
   }
+  $("#record").click(function(){
+     $('#modalPublicRecords').modal('show');
+  });
   $("#scheduleBtn").click(function() {
     if (!(Cookies.get("type"))) {
       $('#loginModal').modal('show');
