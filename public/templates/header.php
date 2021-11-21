@@ -41,7 +41,7 @@
             <i class="fas fa-user text-light"></i>
             <p class="text-capitalize d-inline text-light"></p>
           </div>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="accountOptions">
             <li><a class="dropdown-item" href="../admin/index.php">Admin</a></li>
             <li><a class="dropdown-item" href="#">Medical Records</a></li>
             
