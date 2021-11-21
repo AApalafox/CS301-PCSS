@@ -15,7 +15,7 @@ $ajaxVar = ["condition", "reason", "form_dateTime", "patient_id"];
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div><!-- end of modal header -->
 				<div class="container">
-					<div class="g-3 modal-body p-4 row">
+					<div class="g-3 modal-body p-4 row  overflow-auto">
 						<div class="col">
 							<div class="container">
 								<label class="form-label caption-body">Have you seen a doctor for any of the following illness?</label>
